@@ -37,6 +37,19 @@ cd library-training
 
 ---
 
+## Variable de entorno
+
+Tener esto en la variable de entorno local (.env.local)
+compilar en la terminal
+
+```bash
+
+ENVIRONMENT=TERMINAL
+
+PERSISTENCE_TYPE=MEMORY
+```
+
+
 ## Instalar dependencias
 
 ```bash
