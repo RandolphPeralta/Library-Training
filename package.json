@@ -1,0 +1,28 @@
+{
+  "name": "sistema-biblioteca-ts",
+  "version": "1.0.0",
+  "description": "Sistema de gestión de biblioteca ejecutable en terminal y navegador",
+  "main": "src/index.ts",
+  "scripts": {
+    "start:terminal": "ts-node src/index.ts",
+    "build:web": "webpack --mode production",
+    "dev:web": "webpack serve --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/prompt-sync": "^4.2.3",
+    "dotenv-webpack": "^8.1.0",
+    "html-webpack-plugin": "^5.6.0",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
