@@ -1,6 +1,6 @@
-import { MenuAccion } from "../ui/MenuAccion";
-import { ConsoleView } from "../ui/ConsoleView";
-import { prompt } from "../utils/prompt";
+import { MenuAccion } from "../../ui/terminal/MenuAccion";
+import { ConsoleView } from "../../ui/terminal/ConsoleView";
+import { prompt } from "../../utils/prompt";
 
 export class App {
   constructor(private menu: MenuAccion, private view: ConsoleView) { }

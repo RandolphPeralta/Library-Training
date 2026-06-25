@@ -1,42 +1,32 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: "./src/indexweb.ts",
+
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist")
+  },
+
   module: {
     rules: [
       {
-        test: /\.ts?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/
+      }
+    ]
   },
+
   resolve: {
-    extensions: ['.ts', '.js'],
-    fallback: {
-      "fs": false,
-      "path": false,
-      "readline": false
-    }
+    extensions: [".ts", ".js"]
   },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Hola mundo',
-    }),
-    new Dotenv({
-      path: './.env.local',
-    })
-  ],
+
   devServer: {
-    static: './dist',
-    port: 3000,
-    open: true
+    static: {
+      directory: path.join(__dirname, "src")
+    },
+    open: true,
+    port: 8000
   }
 };

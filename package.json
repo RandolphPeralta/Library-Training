@@ -5,8 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "start:terminal": "ts-node src/index.ts",
-    "build:web": "webpack --mode production",
-    "dev:web": "webpack serve --mode development"
+    "build:web": "webpack --mode production --env archivo=.env.local",
+    "dev:web": "webpack serve --mode development --env archivo=.env.local"
   },
   "keywords": [],
   "author": "",

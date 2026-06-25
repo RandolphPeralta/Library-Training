@@ -1,8 +1,8 @@
-import { IAccionadicional } from "../core/interfaces/IAccion";
-import { prompt } from "../utils/prompt";
-import { Estudiante } from "../types/Estudiante";
-import { Libro } from "../types/Libro";
-import { Prestamo } from "../types/Prestamo";
+import { IAccionadicional } from "../../core/interfaces/IAccion";
+import { prompt } from "../../utils/prompt";
+import { Estudiante } from "../../types/Estudiante";
+import { Libro } from "../../types/Libro";
+import { Prestamo } from "../../types/Prestamo";
 
 export class MenuAccion {
   constructor(
