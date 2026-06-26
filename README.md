@@ -5,7 +5,6 @@ Proyecto simple para demostrar:
 - TypeScript
 - Webpack
 - Variables de entorno
-- Persistencia intercambiable
 - Ejecución en Node.js y Navegador
 
 ---
