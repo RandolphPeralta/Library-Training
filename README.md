@@ -1,6 +1,6 @@
 # Sistema de biblioteca
 
-Proyecto simple para demostrar:
+Proyecto sobre un sistema de prestamo en una biblioteca, con herramientas como:
 
 - TypeScript
 - Webpack
@@ -10,6 +10,14 @@ Proyecto simple para demostrar:
 ---
 
 ## Requisitos
+
+Git
+
+Verificar:
+
+```bash
+git -v
+```
 
 Node.js 22+
 
@@ -47,7 +55,6 @@ BASE_URL=https://localhost:8000
 ENVIRONMENT=LOCAL
 ```
 
-
 ## Instalar dependencias
 
 ```bash
@@ -72,6 +79,11 @@ npm i --save-dev @types/prompt-sync
 
 ```bash
 npm run start:terminal
+```
+
+## Construir o preparar archivos empaquetados para la web
+```bash
+npm run build:web
 ```
 
 ### Ejecutar en la web

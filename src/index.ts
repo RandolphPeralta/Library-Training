@@ -1,6 +1,4 @@
 import { Memoria } from "./core/persistence/Memoria";
-import { LocalStoragePersistence } from "./core/persistence/Localstorage";
-import { DatabasePersistence } from "./core/persistence/database/Database";
 import { Libro } from "./types/Libro";
 import { Estudiante } from "./types/Estudiante";
 import { Prestamo } from "./types/Prestamo";
