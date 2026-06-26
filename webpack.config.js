@@ -8,9 +8,9 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   },
 
-  externals: {
-    "prompt-sync": "{}"
-  },
+  // externals: {
+  //   "prompt-sync": "{}"
+  // },
 
   module: {
     rules: [
