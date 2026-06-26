@@ -74,3 +74,9 @@ npm i --save-dev @types/prompt-sync
 ```bash
 npm run start:terminal
 ```
+
+### Ejecutar en la web
+
+````bash
+npm run dev:web
+```
