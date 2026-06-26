@@ -6,3 +6,4 @@ scratch/
 .env.qa
 npm-debug.log*
 package-lock.json
+biblioteca.db
