@@ -44,9 +44,8 @@ compilar en la terminal
 
 ```bash
 
-ENVIRONMENT=TERMINAL
-
-PERSISTENCE_TYPE=MEMORY
+BASE_URL=https://localhost:8000
+ENVIRONMENT=LOCAL
 ```
 
 

@@ -7,7 +7,7 @@ export class BaseDatos<T> implements IAccionadicional<T> {
         return true;
     }
 
-    eliminar(id: string): void {
+    eliminar(id: string) {
         // DELETE
     }
 

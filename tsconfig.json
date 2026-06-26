@@ -5,10 +5,8 @@
     "lib": ["DOM", "ES2022"],
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src"  
+    "rootDir": "./src"
   },
   "include": ["src/**/*"]
 }
