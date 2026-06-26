@@ -1,11 +1,15 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/indexweb.ts",
+  entry: "./src/index.ts",
 
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist")
+  },
+
+  externals: {
+    "prompt-sync": "{}"
   },
 
   module: {
@@ -19,7 +23,12 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".ts", ".js"]
+    extensions: [".ts", ".js"],
+    fallback: {
+      fs: false,
+      path: false,
+      readline: false
+    }
   },
 
   devServer: {
