@@ -5,6 +5,6 @@ export type Prestamo = {
     id: string,
     libro: Libro,
     estudiante: Estudiante,
-    fechaPrestamo: Date; 
+    fechaPrestamo: Date;
     fechaDevolucion?: Date;
 }

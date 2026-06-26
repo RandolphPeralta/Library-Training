@@ -77,7 +77,7 @@ export class MenuAccion {
         this.mostrarPrestamos();
         this.pause();
         break;
-      
+
       case 14:
         this.encontrarPrestamoPorLibro();
         this.pause();
@@ -87,7 +87,7 @@ export class MenuAccion {
         this.actualizarPrestamo();
         this.pause();
         break;
-      
+
       case 0:
         return false;
 

@@ -40,7 +40,7 @@ export class LocalStoragePersistence<T> implements IAccionadicional<T> {
   guardar(some: any): boolean {
     const items = this.getAll();
     const index = items.findIndex((item: any) => item.id === some.id);
-    
+
     if (index !== -1) {
       return false;
     }
