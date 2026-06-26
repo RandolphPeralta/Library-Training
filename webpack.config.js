@@ -27,6 +27,6 @@ module.exports = {
       directory: path.join(__dirname, "src")
     },
     open: true,
-    port: 8000
+    // port: 8000
   }
 };

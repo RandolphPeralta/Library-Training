@@ -26,13 +26,13 @@ npm -v
 ## Clonar proyecto
 
 ```bash
-git clone https://github.com/usuario/library-training.git
+git clone https://github.com/RandolphPeralta/Library-Training.git
 ```
 
 Entrar al proyecto:
 
 ```bash
-cd library-training
+cd Library-Training
 ```
 
 ---
