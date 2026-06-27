@@ -4,8 +4,6 @@ Proyecto sobre un sistema de prestamo en una biblioteca, con herramientas como:
 
 - TypeScript
 - Webpack
-- Variables de entorno
-- Ejecución en Node.js y Navegador
 
 ---
 
@@ -50,7 +48,6 @@ Tener esto en la variable de entorno local (.env.local)
 compilar en la terminal
 
 ```bash
-
 BASE_URL=https://localhost:8000
 ENVIRONMENT=LOCAL
 ```
@@ -62,18 +59,6 @@ npm install
 ```
 
 ---
-
-## Instalar lenguaje Typescript 
-
-```bash
-npm install -D typescript
-```
-
-## Instalar dependencia prompt
-
-```bash
-npm i --save-dev @types/prompt-sync
-```
 
 ## Ejecutar en la terminal
 
@@ -88,6 +73,32 @@ npm run build:web
 
 ### Ejecutar en la web
 
-````bash
+```bash
 npm run dev:web
+```
+
+## Sugerencias
+
+Dado algun caso no llega a funcionar en la terminal se puede forzar la instalacion de typescript
+
+Forzar Instalacion de Typescript 
+```bash
+npm install -D typescript
+```
+
+Forzar instalacion de prompt
+```bash
+npm i --save-dev @types/prompt-sync
+```
+
+Forzar instalacion de localstorage
+```bash
+npm install node-localstorage 
+npm install --save-dev @types/node-localstorage 
+```
+
+Forzar instalacion de localstorage
+```bash
+npm install better-sqlite3  
+npm install -D @types/better-sqlite3  
 ```
