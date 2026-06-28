@@ -44,7 +44,7 @@ cd Library-Training
 
 ## Variable de entorno
 
-Tener esto en la variable de entorno local (.env.local)
+Si se esta usando vscode tener esto en la variable de entorno local (.env.local)
 compilar en la terminal
 
 ```bash
@@ -76,6 +76,8 @@ npm run build:web
 ```bash
 npm run dev:web
 ```
+
+Al terminar, luego presionar Ctrl + C para dejar de usar el navegador en la terminal
 
 ## Sugerencias
 
