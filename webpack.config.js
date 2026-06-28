@@ -1,17 +1,9 @@
-const path = require("path");
+const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.ts",
-
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist")
-  },
-
-  // externals: {
-  //   "prompt-sync": "{}"
-  // },
-
   module: {
     rules: [
       {
@@ -21,7 +13,6 @@ module.exports = {
       }
     ]
   },
-
   resolve: {
     extensions: [".ts", ".js"],
     fallback: {
@@ -30,12 +21,28 @@ module.exports = {
       readline: false
     }
   },
-
+  output: {
+    filename: "bundle.js"
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      templateContent: `
+        <!DOCTYPE html>
+        <html>
+          <head><title>Hola Mundo</title></head>
+          <body>
+            <h1>hola mundo</h1>
+            <script src="bundle.js"></script>
+          </body>
+        </html>
+      `
+    }),
+    new webpack.DefinePlugin({
+      "process.env.ENVIRONMENT": JSON.stringify("LOCAL")
+    })
+  ],
   devServer: {
-    static: {
-      directory: path.join(__dirname, "src")
-    },
     open: true,
-    // port: 8000
+    port: 8000
   }
 };
