@@ -1,4 +1,6 @@
 import { Memoria } from "./core/persistence/Memoria";
+// import { LocalStoragePersistence } from "./core/persistence/Localstorage";
+// import { DatabasePersistence } from "./core/persistence/database/Database";
 import { Libro } from "./types/Libro";
 import { Estudiante } from "./types/Estudiante";
 import { Prestamo } from "./types/Prestamo";
@@ -9,6 +11,14 @@ import { App } from "./app/terminal/app";
 const memoriaLibro = new Memoria<Libro>();
 const memoriaEstudiante = new Memoria<Estudiante>();
 const memoriaPrestamo = new Memoria<Prestamo>();
+
+// const LocalstorageLibro = new LocalStoragePersistence<Libro>("libro");
+// const LocalstorageEstudiante = new LocalStoragePersistence<Estudiante>("Estudiante");
+// const LocalstoragePrestamo = new LocalStoragePersistence<Prestamo>("Prestamo");
+
+// const DatabasePersistenceLibro = new DatabasePersistence<Libro>("libros");
+// const DatabasePersistenceEstudiante = new DatabasePersistence<Estudiante>("estudiantes");
+// const DatabasePersistencePrestamo = new DatabasePersistence<Prestamo>("prestamos");
 
 const menu = new MenuAccion(memoriaEstudiante, memoriaLibro, memoriaPrestamo);
 
