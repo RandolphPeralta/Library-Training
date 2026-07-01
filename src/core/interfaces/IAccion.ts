@@ -11,7 +11,3 @@ export interface IAccion<T> extends IGuardado<T>{
 export interface IAccionadicional<T> extends IAccion<T> {
   buscarporid(id: string): Array<T>
 }
-
-export interface ICommand {
-  execute(): any;
-}
