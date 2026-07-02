@@ -79,7 +79,7 @@ npm run dev:web
 
 Al terminar, luego presionar Ctrl + C para dejar de usar el navegador en la terminal
 
-# 📁 Estructura del proyecto
+# Estructura del proyecto
 
 ```
 Library-Training
