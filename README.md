@@ -42,16 +42,6 @@ cd Library-Training
 
 ---
 
-## Variable de entorno
-
-Si se esta usando vscode tener esto en la variable de entorno local (.env.local)
-compilar en la terminal
-
-```bash
-BASE_URL=https://localhost:8000
-ENVIRONMENT=LOCAL
-```
-
 ## Instalar dependencias
 
 ```bash
@@ -94,6 +84,16 @@ Library-Training
 ```
 
 ## Sugerencias
+
+## Variable de entorno
+
+Si se esta usando vscode tener esto en la variable de entorno local (.env.local)
+compilar en la terminal
+
+```bash
+BASE_URL=https://localhost:8000
+ENVIRONMENT=LOCAL
+```
 
 Dado algun caso no llega a funcionar en la terminal se puede forzar la instalacion de typescript
 
