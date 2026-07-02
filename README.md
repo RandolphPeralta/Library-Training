@@ -79,6 +79,20 @@ npm run dev:web
 
 Al terminar, luego presionar Ctrl + C para dejar de usar el navegador en la terminal
 
+# 📁 Estructura del proyecto
+
+```
+Library-Training
+│
+├── src/                 # Código fuente
+├── dist/                # Archivos compilados
+├── .editorconfig
+├── webpack.config.js
+├── tsconfig.json
+├── package.json
+└── README.md
+```
+
 ## Sugerencias
 
 Dado algun caso no llega a funcionar en la terminal se puede forzar la instalacion de typescript
