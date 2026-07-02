@@ -1,6 +1,6 @@
 # Sistema de biblioteca
 
-Proyecto sobre un sistema de prestamo en una biblioteca, con herramientas como:
+Proyecto desarrollado en **TypeScript** que simula un sistema de préstamo de libros para una biblioteca. El proyecto puede ejecutarse tanto desde la **terminal** como desde un **navegador web** gracias a Webpack.
 
 - TypeScript
 - Webpack
