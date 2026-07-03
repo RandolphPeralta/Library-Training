@@ -3,17 +3,18 @@ import { LocalStorage } from 'node-localstorage';
 (global as any).localStorage = new LocalStorage("./scratch");
 
 export class LocalStoragePersistence<T> implements IAccionadicional<T> {
+
   constructor(private storageKey: string) {
     if (!localStorage.getItem(this.storageKey)) {
       localStorage.setItem(this.storageKey, JSON.stringify([]));
     }
   }
 
-  private accessStorage(write?: T[]): T[] {
+  private accessStorage(list?: T[]): T[] {
     try {
-      if (write) {
-        localStorage.setItem(this.storageKey, JSON.stringify(write));
-        return write;
+      if (list) {
+        localStorage.setItem(this.storageKey, JSON.stringify(list));
+        return list;
       }
       const data = localStorage.getItem(this.storageKey);
       return data ? JSON.parse(data) : [];
