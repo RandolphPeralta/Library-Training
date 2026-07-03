@@ -3,78 +3,53 @@ import { LocalStorage } from 'node-localstorage';
 (global as any).localStorage = new LocalStorage("./scratch");
 
 export class LocalStoragePersistence<T> implements IAccionadicional<T> {
-
   constructor(private storageKey: string) {
-    this.storageKey = storageKey;
-    this.initializeStorage();
-  }
-
-  private initializeStorage(): void {
-    try {
-      if (!localStorage.getItem(this.storageKey)) {
-        localStorage.setItem(this.storageKey, JSON.stringify([]));
-      }
-    } catch (error) {
-      console.error(`Error inicializando localStorage para ${this.storageKey}:`, error);
+    if (!localStorage.getItem(this.storageKey)) {
+      localStorage.setItem(this.storageKey, JSON.stringify([]));
     }
   }
 
-  private getAll(): T[] {
+  private accessStorage(write?: T[]): T[] {
     try {
+      if (write) {
+        localStorage.setItem(this.storageKey, JSON.stringify(write));
+        return write;
+      }
       const data = localStorage.getItem(this.storageKey);
       return data ? JSON.parse(data) : [];
     } catch (error) {
-      console.error(`Error leyendo datos de ${this.storageKey}:`, error);
+      console.error(`Error en storage ${this.storageKey}:`, error);
       return [];
     }
   }
 
-  private saveAll(items: T[]): void {
-    try {
-      localStorage.setItem(this.storageKey, JSON.stringify(items));
-    } catch (error) {
-      console.error(`Error guardando datos en ${this.storageKey}:`, error);
-    }
-  }
-
   guardar(some: any): boolean {
-    const items = this.getAll();
-    const index = items.findIndex((item: any) => item.id === some.id);
-
-    if (index !== -1) {
-      return false;
-    }
-
+    const items = this.accessStorage();
+    if (items.some((item: any) => item.id === some.id)) return false;
     items.push(some);
-    this.saveAll(items);
+    this.accessStorage(items);
     return true;
   }
 
   eliminar(id: any): void {
-    let items = this.getAll();
-    items = items.filter((item: any) => item.id !== id);
-    this.saveAll(items);
+    const items = this.accessStorage().filter((item: any) => item.id !== id);
+    this.accessStorage(items);
   }
 
   actualizar(some: any): boolean {
-    const items = this.getAll();
+    const items = this.accessStorage();
     const index = items.findIndex((item: any) => item.id === some.id);
-
-    if (index === -1) {
-      return false;
-    }
-
+    if (index === -1) return false;
     items[index] = some;
-    this.saveAll(items);
+    this.accessStorage(items);
     return true;
   }
 
   mostrar(): T[] {
-    return this.getAll();
+    return this.accessStorage();
   }
 
   buscarporid(id: string): T[] {
-    const items = this.getAll();
-    return items.filter((item: any) => item.id === id);
+    return this.accessStorage().filter((item: any) => item.id === id);
   }
 }

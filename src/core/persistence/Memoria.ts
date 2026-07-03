@@ -36,8 +36,8 @@ export class Memoria<T> implements IAccionadicional<T> {
   mostrar(): T[] {
     return this.memoria;
   }
-  
+
   buscarporid(id: string) {
-        return this.memoria.filter((item: any) => item.id === id)
-    }
+    return this.memoria.filter((item: any) => item.id === id)
+  }
 }
