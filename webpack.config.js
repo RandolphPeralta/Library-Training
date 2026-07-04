@@ -23,7 +23,6 @@ module.exports = {
     fallback: {
       fs: false,
       path: false,
-      readline: false
     }
   },
 

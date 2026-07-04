@@ -104,6 +104,7 @@ npm install -D typescript
 
 Forzar instalacion de prompt
 ```bash
+npm install prompt-sync
 npm i --save-dev @types/prompt-sync
 ```
 
@@ -113,7 +114,7 @@ npm install node-localstorage
 npm install --save-dev @types/node-localstorage 
 ```
 
-Forzar instalacion de localstorage
+Forzar instalacion de sqlite
 ```bash
 npm install better-sqlite3  
 npm install -D @types/better-sqlite3  
