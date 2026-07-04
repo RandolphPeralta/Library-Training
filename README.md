@@ -2,7 +2,9 @@
 
 Proyecto desarrollado en **TypeScript** que simula un sistema de préstamo de libros para una biblioteca. El proyecto puede ejecutarse tanto desde la **terminal** como desde un **navegador web** gracias a Webpack.
 
+- Node.js
 - TypeScript
+- Javascript
 - Webpack
 
 ---
