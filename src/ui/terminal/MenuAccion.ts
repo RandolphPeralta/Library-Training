@@ -369,5 +369,4 @@ export class MenuAccion {
   private pause() {
     prompt("\nPresiona ENTER para continuar...");
   }
-
 }
