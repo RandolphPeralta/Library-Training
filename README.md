@@ -6,7 +6,7 @@ Proyecto desarrollado en **TypeScript** que simula un sistema de préstamo de li
 - TypeScript
 - Javascript
 - Webpack
-- HTMLs
+- HTML
 
 ---
 
