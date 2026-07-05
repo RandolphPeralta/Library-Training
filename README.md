@@ -123,7 +123,7 @@ Library-Training
 
 ## Variable de entorno
 
-Si se esta usando vscode debes Crear un archivo llamado en la raiz del proyecto:
+Si se esta usando vscode debes crear un archivo llamado en la raiz del proyecto:
 
 ```bash
 .env.local
