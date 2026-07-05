@@ -1,18 +1,33 @@
 # Sistema de biblioteca
 
-Proyecto desarrollado en **TypeScript** que simula un sistema de préstamo de libros para una biblioteca, bajo la aplicacion de **Programacion Orientado a Objetos** y los principios de diseño **SOLID**. El proyecto puede ejecutarse tanto desde la **terminal** como desde un **navegador web** gracias a Webpack.
+Proyecto desarrollado en **TypeScript** que simula un sistema de gestión y préstamo de libros de una biblioteca aplicando los **principios de Programación Orientada a Objetos (POO)**, **SOLID** y **Separación de responsabilidades**.
 
-- Node.js
-- TypeScript
-- Javascript
-- Webpack
-- HTML
+La aplicación puede ejecutarse tanto desde la **terminal** como desde un **navegador web**, utilizando Webpack para el empaquetado del proyecto.
+
+# Tecnologías utilizadas
+
+| Tecnología   | Uso                        |
+| ------------ | -------------------------- |
+| TypeScript   | Lenguaje principal         |
+| JavaScript   | Código generado            |
+| Node.js      | Ejecución en consola       |
+| Webpack      | Empaquetado para navegador |
+| HTML         | Interfaz web               |
+| SQLite       | Persistencia de datos      |
+| LocalStorage | Persistencia local         |
+| prompt-sync  | Entrada por consola        |
 
 ---
 
 Abrir la terminal
 
 ## Requisitos
+
+Antes de comenzar asegúrese de tener instalado:
+
+Git
+Node.js 22 o superior
+npm
 
 Git
 
@@ -32,6 +47,8 @@ npm -v
 ```
 
 ---
+
+# Instalación
 
 ## Clonar proyecto
 
@@ -72,7 +89,22 @@ npm run build:web
 npm run dev:web
 ```
 
-Al terminar, luego presionar Ctrl + C para dejar de usar el navegador en la terminal
+Una vez iniciado, abrir el navegador en la dirección indicada por Webpack Dev Server.
+
+Para detener el servidor:
+
+```bash
+Ctrl + C
+```
+
+# Scripts disponibles
+
+| Script                   | Descripción                                  |
+| ------------------------ | -------------------------------------------- |
+| `npm run start:terminal` | Ejecuta la aplicación en consola             |
+| `npm run build:web`      | Genera la versión de producción para la web  |
+| `npm run dev:web`        | Ejecuta la aplicación web en modo desarrollo |
+
 
 # Estructura del proyecto
 
@@ -88,13 +120,17 @@ Library-Training
 └── README.md
 ```
 
-## Sugerencias
+## Solución de problemas
 
 ## Variable de entorno
 
-Si se esta usando vscode tener esto en la variable de entorno local (.env.local)
-compilar en la terminal
+Si se esta usando vscode debes Crear un archivo llamado en la raiz del proyecto:
 
+```bash
+.env.local
+```
+
+con el siguiente contenido:
 ```bash
 BASE_URL=https://localhost:8000
 ENVIRONMENT=LOCAL
