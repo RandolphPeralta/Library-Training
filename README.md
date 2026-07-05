@@ -26,7 +26,9 @@ Abrir la terminal
 Antes de comenzar asegúrese de tener instalado:
 
 Git
+
 Node.js 22 o superior
+
 npm
 
 Git
