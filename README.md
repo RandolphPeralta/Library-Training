@@ -31,17 +31,14 @@ Node.js 22 o superior
 
 npm
 
-Git
 
-Verificar:
+Para verificar git:
 
 ```bash
 git -v
 ```
 
-Node.js 22+
-
-Verificar:
+Para verificar node.js:
 
 ```bash
 node -v
