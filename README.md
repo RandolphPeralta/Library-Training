@@ -131,8 +131,7 @@ Si se esta usando vscode debes crear un archivo llamado en la raiz del proyecto:
 
 con el siguiente contenido:
 ```bash
-BASE_URL=https://localhost:8000
-ENVIRONMENT=LOCAL
+BASE_URL= http://localhost:8000/
 ```
 
 Dado algun caso no llega a funcionar en la terminal se puede forzar la instalacion de typescript
