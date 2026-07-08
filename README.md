@@ -8,13 +8,11 @@ La aplicación puede ejecutarse tanto desde la **terminal** como desde un **nave
 
 | Tecnología   | Uso                        |
 | ------------ | -------------------------- |
-| TypeScript   | Lenguaje principal         |
+| TypeScript   | Lenguaje de desarrollo     |
 | JavaScript   | Código generado            |
 | Node.js      | Ejecución en consola       |
 | Webpack      | Empaquetado para navegador |
 | HTML         | Interfaz web               |
-| SQLite       | Persistencia de datos      |
-| LocalStorage | Persistencia local         |
 | prompt-sync  | Entrada por consola        |
 
 ---
@@ -145,16 +143,4 @@ Forzar instalacion de prompt
 ```bash
 npm install prompt-sync
 npm i --save-dev @types/prompt-sync
-```
-
-Forzar instalacion de localstorage
-```bash
-npm install node-localstorage 
-npm install --save-dev @types/node-localstorage 
-```
-
-Forzar instalacion de sqlite
-```bash
-npm install better-sqlite3  
-npm install -D @types/better-sqlite3  
 ```
