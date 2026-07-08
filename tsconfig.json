@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "CommonJS",
+    "target": "esnext",
+    "module": "nodenext",
     "strict": true,
     "esModuleInterop": true,
+    "rootDir": "./src",
     "outDir": "./dist",
-    "rootDir": "./src"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"]   
 }
