@@ -6,5 +6,4 @@ export class App {
   run() {
     this.menu.ejecutar();
   }
-
 }
