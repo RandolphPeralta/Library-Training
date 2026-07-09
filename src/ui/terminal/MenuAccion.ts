@@ -11,91 +11,125 @@ export class MenuAccion {
     private servicioPrestamo: IAccionadicional<Prestamo>
   ) { }
 
-  ejecutar(opcion: number): boolean {
-    switch (opcion) {
-      case 1:
-        this.registrarEstudiante();
-        this.pause();
-        break;
+  ejecutar(): void {
+    let continuar = true;
 
-      case 2:
-        this.eliminarEstudiante();
-        this.pause();
-        break
+    while (continuar) {
+      this.mostrarMenu();
+      const opcion =  Number(prompt("Seleccione opción: "));
+      
+      switch (opcion) {
+        case 1:
+          this.registrarEstudiante();
+          this.pause();
+          break;
 
-      case 3:
-        console.table(this.servicioEstudiante.mostrar());
-        this.pause();
-        break;
+        case 2:
+          this.eliminarEstudiante();
+          this.pause();
+          break;
 
-      case 4:
-        this.actualizarEstudiante()
-        this.pause();
-        break;
+        case 3:
+          console.table(this.servicioEstudiante.mostrar());
+          this.pause();
+          break;
 
-      case 5:
-        this.buscarEstudiante()
-        this.pause();
-        break;
+        case 4:
+          this.actualizarEstudiante();
+          this.pause();
+          break;
 
-      case 6:
-        this.registrarLibro();
-        this.pause();
-        break;
+        case 5:
+          this.buscarEstudiante();
+          this.pause();
+          break;
 
-      case 7:
-        this.elmiminarLibro();
-        this.pause();
-        break
+        case 6:
+          this.registrarLibro();
+          this.pause();
+          break;
 
-      case 8:
-        this.mostrarLibros();
-        this.pause();
-        break;
+        case 7:
+          this.elmiminarLibro();
+          this.pause();
+          break;
 
-      case 9:
-        this.actualizarlibro();
-        this.pause();
-        break
+        case 8:
+          this.mostrarLibros();
+          this.pause();
+          break;
 
-      case 10:
-        this.buscarLibro()
-        this.pause();
-        break;
+        case 9:
+          this.actualizarlibro();
+          this.pause();
+          break;
 
-      case 11:
-        this.prestarLibrob();
-        this.pause();
-        break;
+        case 10:
+          this.buscarLibro();
+          this.pause();
+          break;
 
-      case 12:
-        this.devolverLibrob();
-        this.pause();
-        break;
+        case 11:
+          this.prestarLibrob();
+          this.pause();
+          break;
 
-      case 13:
-        this.mostrarPrestamos();
-        this.pause();
-        break;
+        case 12:
+          this.devolverLibrob();
+          this.pause();
+          break;
 
-      case 14:
-        this.encontrarPrestamoPorLibro();
-        this.pause();
-        break;
+        case 13:
+          this.mostrarPrestamos();
+          this.pause();
+          break;
 
-      case 15:
-        this.actualizarPrestamo();
-        this.pause();
-        break;
+        case 14:
+          this.encontrarPrestamoPorLibro();
+          this.pause();
+          break;
 
-      case 0:
-        return false;
+        case 15:
+          this.actualizarPrestamo();
+          this.pause();
+          break;
 
-      default:
-        console.log("Opción inválida");
+        case 0:
+          continuar = false;
+          break;
+
+        default:
+          console.log("Opción inválida");
+          this.pause();
+      }
     }
+  }
 
-    return true;
+  private mostrarMenu(): void {
+    console.log("\n=============================================");
+    console.log("Bienvenido al Sistema de Biblioteca ¿qué desea?");
+    console.log("=============================================");
+    const opciones: string[] = [
+      "1. Registrar Estudiante",
+      "2. Eliminar Estudiante",
+      "3. Ver Estudiantes",
+      "4. Actualizar Estudiante",
+      "5. Buscar Estudiante",
+      "6. Registrar Libro",
+      "7. Eliminar Libro",
+      "8. Ver Libros",
+      "9. Actualizar Libros",
+      "10. Buscar Libro",
+      "11. Prestar Libro",
+      "12. Devolver Libro",
+      "13. Mostrar Prestamos",
+      "14. Buscar Prestamo",
+      "15. Actualizar Prestamo",
+      "0. Salir"
+    ];
+    for (const opcion of opciones) {
+      console.log(opcion);
+    }
   }
 
   private registrarEstudiante() {
