@@ -26,6 +26,10 @@ module.exports = {
     }
   },
 
+  externals: {
+        "prompt-sync": "commonjs prompt-sync"
+    },
+
   devServer: {
     static: {
       directory: path.join(__dirname, "src/ui/web")
