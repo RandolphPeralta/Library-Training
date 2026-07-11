@@ -12,7 +12,7 @@ La aplicación puede ejecutarse tanto desde la **terminal** como desde un **nave
 | JavaScript   | Código generado            |
 | Node.js      | Ejecución en consola       |
 | Webpack      | Empaquetado para navegador |
-| HTML         | Interfaz web               |
+| HTML         | Interacion web             |
 | prompt-sync  | Entrada por consola        |
 
 ---
