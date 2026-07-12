@@ -1,7 +1,7 @@
-import { MenuAccion } from "../ui/terminal/MenuAccion";
+import { IMenu } from "../core/interfaces/IMenu";
 
 export class App {
-  constructor(private menu: MenuAccion) { }
+  constructor(private menu: IMenu) { }
 
   run() {
     this.menu.ejecutar();
