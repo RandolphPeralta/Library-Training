@@ -1,3 +1,3 @@
 export interface IMenu {
-  ejecutar(): void;
+  ejecutar(): any;
 }
