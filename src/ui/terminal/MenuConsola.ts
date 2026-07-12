@@ -1,10 +1,11 @@
 import { IAccionadicional } from "../../core/interfaces/IAccion";
+import { IMenu } from "../../core/interfaces/IMenu";
 import { prompt } from "../../utils/prompt";
 import { Estudiante } from "../../types/Estudiante";
 import { Libro } from "../../types/Libro";
 import { Prestamo } from "../../types/Prestamo";
 
-export class MenuAccion {
+export class MenuConsola implements IMenu{
   constructor(
     private servicioEstudiante: IAccionadicional<Estudiante>,
     private servicioLibro: IAccionadicional<Libro>,
