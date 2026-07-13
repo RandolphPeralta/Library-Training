@@ -315,8 +315,8 @@ export class MenuConsola implements IMenu{
     const idBook = String(prompt("ID del libro: "));
     const Loans = this.LoanPersistence.show()
 
-    const Loan = Loans.find(prestado =>
-      prestado.book.id === idBook && !prestado.returndate
+    const Loan = Loans.find(borrowed =>
+      borrowed.book.id === idBook && !borrowed.returndate
     )
 
     if (!Loan) {
@@ -385,7 +385,7 @@ export class MenuConsola implements IMenu{
 
     const Loans = this.LoanPersistence.show()
 
-    const Loan = Loans.find(prestado => prestado.id === id)
+    const Loan = Loans.find(borrowed => borrowed.id === id)
 
     if (!Loan) {
       console.log("Préstamo no encontrado")
