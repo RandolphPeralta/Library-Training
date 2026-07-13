@@ -1,4 +1,4 @@
-import { IAdditionalAction } from "../../core/interfaces/IAccion";
+import { IAdditionalAction } from "../../core/interfaces/IAction";
 import { IMenu } from "../../core/interfaces/IMenu";
 import { prompt } from "../../utils/prompt";
 import { Student } from "../../types/Student";
