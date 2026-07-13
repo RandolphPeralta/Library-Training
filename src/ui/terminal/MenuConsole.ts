@@ -5,7 +5,7 @@ import { Student } from "../../types/Student";
 import { Book } from "../../types/Book";
 import { Loan } from "../../types/Loan";
 
-export class MenuConsola implements IMenu {
+export class MenuConsole implements IMenu {
   constructor(
     private StudentPersistence: IAdditionalAction<Student>,
     private BookPersistence: IAdditionalAction<Book>,
