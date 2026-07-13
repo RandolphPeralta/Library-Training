@@ -226,16 +226,16 @@ export class MenuConsola implements IMenu{
     const title = String(prompt("Título: "));
     const author = String(prompt("Autor: "));
 
-    const Bookexistente: Book = {
+    const ExistingBook: Book = {
       id: id,
       title: title,
       author: author,
       available: true
     };
 
-    const Bookactualizado = this.BookPersistence.update(Bookexistente);
+    const UpdateBook = this.BookPersistence.update(ExistingBook);
 
-    if (Bookactualizado) {
+    if (UpdateBook) {
       console.log("Libro actualizado");
     } else {
       console.log("No existe un libro con ese ID");
@@ -245,14 +245,14 @@ export class MenuConsola implements IMenu{
   private Showbooks() {
     const Books = this.BookPersistence.show();
 
-    const BooksVista = Books.map(Book => ({
+    const ShowBooks = Books.map(Book => ({
       id: Book.id,
       title: Book.title,
       author: Book.author,
       available: Book.available ? "Sí" : "No"
     }));
 
-    console.table(BooksVista);
+    console.table(ShowBooks);
   }
 
   private Searchforbook() {
