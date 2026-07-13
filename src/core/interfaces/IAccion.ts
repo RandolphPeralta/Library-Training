@@ -1,13 +1,13 @@
-export interface IGuardado<T> {
-  guardar(some: T): any;
-  eliminar(id: any): any;
+export interface ISave<T> {
+  save(some: T): any;
+  delete(id: any): any;
 }
 
-export interface IAccion<T> extends IGuardado<T>{
-  actualizar(some: any): any;
-  mostrar(): T[];
+export interface IAction<T> extends ISave<T>{
+  update(some: any): any;
+  show(): T[];
 }
 
-export interface IAccionadicional<T> extends IAccion<T> {
-  buscarporid(id: string): Array<T>
+export interface IAdditionalAction<T> extends IAction<T> {
+  findbyid(id: string): Array<T>
 }
