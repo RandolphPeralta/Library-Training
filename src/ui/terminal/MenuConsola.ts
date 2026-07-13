@@ -5,7 +5,7 @@ import { Student } from "../../types/Student";
 import { Book } from "../../types/Book";
 import { Loan } from "../../types/Loan";
 
-export class MenuConsola implements IMenu{
+export class MenuConsola implements IMenu {
   constructor(
     private StudentPersistence: IAdditionalAction<Student>,
     private BookPersistence: IAdditionalAction<Book>,
@@ -17,8 +17,8 @@ export class MenuConsola implements IMenu{
 
     while (star) {
       this.showMenu();
-      const opcion =  Number(prompt("Seleccione opción: "));
-      
+      const opcion = Number(prompt("Seleccione opción: "));
+
       switch (opcion) {
         case 1:
           this.Registerstudent();
