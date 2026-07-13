@@ -4,6 +4,6 @@ export class App {
   constructor(private menu: IMenu) { }
 
   run() {
-    this.menu.ejecutar();
+    this.menu.execute();
   }
 }
