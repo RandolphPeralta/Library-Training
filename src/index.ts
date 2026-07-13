@@ -1,15 +1,15 @@
-import { Memoria } from "./core/persistence/Memoria";
-import { Libro } from "./types/Libro";
-import { Estudiante } from "./types/Estudiante";
-import { Prestamo } from "./types/Prestamo";
+import { MemoryRAM } from "./core/persistence/Memory";
+import { Book } from "./types/Book";
+import { Student } from "./types/Student";
+import { Loan } from "./types/Loan";
 import { MenuConsola } from "./ui/terminal/MenuConsola";
 import { App } from "./app/app";
 
-const memoriaLibro = new Memoria<Libro>();
-const memoriaEstudiante = new Memoria<Estudiante>();
-const memoriaPrestamo = new Memoria<Prestamo>();
+const Persistencebook = new MemoryRAM<Book>();
+const Persistencestudent = new MemoryRAM<Student>();
+const Persistenceloan = new MemoryRAM<Loan>();
 
-const menu = new MenuConsola(memoriaEstudiante, memoriaLibro, memoriaPrestamo);
+const menu = new MenuConsola(Persistencestudent, Persistencebook, Persistenceloan);
 
 const app = new App(menu);
 
