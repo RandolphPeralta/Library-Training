@@ -31,7 +31,7 @@ export class MenuConsole implements IMenu {
           break;
 
         case 3:
-          console.table(this.StudentPersistence.show());
+          console.table(this.StudentPersistence.read());
           this.pause();
           break;
 
@@ -56,7 +56,7 @@ export class MenuConsole implements IMenu {
           break;
 
         case 8:
-          this.Showbooks();
+          this.readbooks();
           this.pause();
           break;
 
@@ -81,7 +81,7 @@ export class MenuConsole implements IMenu {
           break;
 
         case 13:
-          this.showLoans();
+          this.readLoans();
           this.pause();
           break;
 
@@ -146,7 +146,7 @@ export class MenuConsole implements IMenu {
       schoolgrade: schoolgrade
     }
 
-    const Studentregistrado = this.StudentPersistence.save(registrandoStudent);
+    const Studentregistrado = this.StudentPersistence.create(registrandoStudent);
 
     if (Studentregistrado) {
       console.log("Estudiante registrado");
@@ -208,7 +208,7 @@ export class MenuConsole implements IMenu {
       available: true
     }
 
-    const Bookregistrado = this.BookPersistence.save(registrandoBook);
+    const Bookregistrado = this.BookPersistence.create(registrandoBook);
     if (Bookregistrado) {
       console.log("Libro registrado");
     } else {
@@ -242,17 +242,17 @@ export class MenuConsole implements IMenu {
     }
   }
 
-  private Showbooks() {
-    const Books = this.BookPersistence.show();
+  private readbooks() {
+    const Books = this.BookPersistence.read();
 
-    const ShowBooks = Books.map(Book => ({
+    const readBooks = Books.map(Book => ({
       id: Book.id,
       title: Book.title,
       author: Book.author,
       available: Book.available ? "Sí" : "No"
     }));
 
-    console.table(ShowBooks);
+    console.table(readBooks);
   }
 
   private Searchforbook() {
@@ -298,7 +298,7 @@ export class MenuConsole implements IMenu {
       loanDate: new Date()
     }
 
-    const estado = this.LoanPersistence.save(Loan)
+    const estado = this.LoanPersistence.create(Loan)
 
     if (!estado) {
       console.log("Error al prestar al libro")
@@ -313,7 +313,7 @@ export class MenuConsole implements IMenu {
 
   private Returnbook() {
     const idBook = String(prompt("ID del libro: "));
-    const Loans = this.LoanPersistence.show()
+    const Loans = this.LoanPersistence.read()
 
     const Loan = Loans.find(borrowed =>
       borrowed.book.id === idBook && !borrowed.returndate
@@ -334,9 +334,9 @@ export class MenuConsole implements IMenu {
     console.log("Libo devuelto correctamente")
   }
 
-  private showLoans(): void {
+  private readLoans(): void {
 
-    const Loans = this.LoanPersistence.show()
+    const Loans = this.LoanPersistence.read()
 
     console.log("\n===== PRÉSTAMOS =====")
 
@@ -360,7 +360,7 @@ export class MenuConsole implements IMenu {
 
     const idBook = String(prompt("ID del Libro: "));
 
-    const Loans = this.LoanPersistence.show()
+    const Loans = this.LoanPersistence.read()
 
     const Loan = Loans.find(loan =>
       loan.book.id === idBook && !loan.returndate
@@ -383,7 +383,7 @@ export class MenuConsole implements IMenu {
 
     const id = String(prompt("ID del Prestamo: "));
 
-    const Loans = this.LoanPersistence.show()
+    const Loans = this.LoanPersistence.read()
 
     const Loan = Loans.find(borrowed => borrowed.id === id)
 
