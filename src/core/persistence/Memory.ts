@@ -4,7 +4,7 @@ export class MemoryRAM<T> implements IAdditionalAction<T> {
 
   private memory: T[] = [];
 
-  save(some: any): boolean {
+  create(some: any): boolean {
     let index = this.memory.findIndex((item: any) => item.id === some.id);
 
     if (index !== -1) {
@@ -33,7 +33,7 @@ export class MemoryRAM<T> implements IAdditionalAction<T> {
     return true;
   }
 
-  show(): T[] {
+  read(): T[] {
     return this.memory;
   }
 
