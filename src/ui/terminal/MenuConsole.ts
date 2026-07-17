@@ -139,16 +139,16 @@ export class MenuConsole implements IMenu {
     const identification = String(prompt("Identificación: "));
     const schoolgrade = String(prompt("Grado Escolar: "));
 
-    const registrandoStudent: Student = {
+    const RegisteringStudent: Student = {
       id: id,
       name: name,
       identification: identification,
       schoolgrade: schoolgrade
     }
 
-    const Studentregistrado = this.StudentPersistence.create(registrandoStudent);
+    const Registeredstudent = this.StudentPersistence.create(RegisteringStudent);
 
-    if (Studentregistrado) {
+    if (Registeredstudent) {
       console.log("Estudiante registrado");
     } else {
       console.log("El Estudiante ya existe con este ID");
@@ -201,15 +201,15 @@ export class MenuConsole implements IMenu {
     const title = String(prompt("Título: "));
     const author = String(prompt("Autor: "));
 
-    const registrandoBook: Book = {
+    const registeringBook: Book = {
       id: id,
       title: title,
       author: author,
       available: true
     }
 
-    const Bookregistrado = this.BookPersistence.create(registrandoBook);
-    if (Bookregistrado) {
+    const Bookregistered = this.BookPersistence.create(registeringBook);
+    if (Bookregistered) {
       console.log("Libro registrado");
     } else {
       console.log("El Libro ya existe con este ID");
