@@ -1,11 +1,11 @@
 import { IAdditionalAction } from "../../core/interfaces/IAction";
-import { IMenu } from "../../core/interfaces/IMenu";
+import { IView } from "../../core/interfaces/IView";
 import { prompt } from "../../utils/prompt";
 import { Student } from "../../types/Student";
 import { Book } from "../../types/Book";
 import { Loan } from "../../types/Loan";
 
-export class MenuConsole implements IMenu {
+export class MenuConsole implements IView {
   constructor(
     private StudentPersistence: IAdditionalAction<Student>,
     private BookPersistence: IAdditionalAction<Book>,
