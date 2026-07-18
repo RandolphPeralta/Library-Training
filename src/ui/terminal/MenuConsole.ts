@@ -157,8 +157,13 @@ export class MenuConsole implements IView {
 
   private deletestudent() {
     const id = String(prompt("ID: "));
-    this.StudentPersistence.delete(id)
-    console.log("Estudiante Eliminado")
+    const Eliminatestudent = this.StudentPersistence.delete(id)
+
+     if (Eliminatestudent) {
+      console.log("Estudiante Estudiante Eliminado");
+    } else {
+      console.log("No existe un estudiante con ese ID");
+    }
   }
 
   private Updatestudent() {
@@ -218,7 +223,13 @@ export class MenuConsole implements IView {
 
   private Deletebook() {
     const idBook = String(prompt("ID Libro: "));
-    this.BookPersistence.delete(idBook)
+    const Eliminatebook = this.BookPersistence.delete(idBook);
+
+    if (Eliminatebook) {
+      console.log("Libro eliminado");
+    } else {
+      console.log("No existe un libro con ese ID");
+    }
   }
 
   private Updatebook() {
