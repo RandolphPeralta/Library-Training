@@ -19,6 +19,9 @@ export class MemoryRAM<T> implements IAdditionalAction<T> {
     let index = this.memory.findIndex((item: any) => item.id === id);
     if (index !== -1) {
       this.memory.splice(index, 1);
+      return true
+    } else {
+      return false
     }
   }
 
