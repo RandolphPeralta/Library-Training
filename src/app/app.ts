@@ -1,7 +1,7 @@
-import { IMenu } from "../core/interfaces/IMenu";
+import { IView } from "../core/interfaces/IView";
 
 export class App {
-  constructor(private menu: IMenu) { }
+  constructor(private menu: IView) { }
 
   run() {
     this.menu.execute();
