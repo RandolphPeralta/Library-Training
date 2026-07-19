@@ -1,7 +1,7 @@
 import { Book } from "./domain/types/Book";
 import { Student } from "./domain/types/Student";
 import { Loan } from "./domain/types/Loan";
-import { MemoryRAM } from "./infrastructure/persistence/persistence/Memoryextra";
+import { MemoryRAM } from "./infrastructure/Memoryextra";
 import { Studentnegocy } from "./services/studenusecase";
 import { Booknegocy } from "./services/bookusecase";
 import { Loannegocy } from "./services/loanusecase";
