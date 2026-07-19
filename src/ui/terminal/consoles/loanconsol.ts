@@ -1,7 +1,7 @@
-import { IView } from "../../../../core/interfaces/IView";
-import { IExtraAction } from "../../../../core/interfaces/IExtra";
-import { Loan } from "../../../../types/Loan";
-import { prompt } from "../../../../utils/prompt";
+import { IView } from "../../../domain/interfaces/IView";
+import { IExtraAction } from "../../../domain/interfaces/IExtra";
+import { Loan } from "../../../domain/types/Loan";
+import { prompt } from "../../../utils/prompt";
 
 export class LoanConsole implements IView {
 
@@ -144,7 +144,7 @@ export class LoanConsole implements IView {
 
         if (!loan) {
 
-            console.log("Libro disponible");
+            console.log("No existe prestamo");
 
             return;
 

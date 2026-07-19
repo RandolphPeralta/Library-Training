@@ -1,12 +1,12 @@
-import { IView } from "../../../../core/interfaces/IView";
-import { prompt } from "../../../../utils/prompt";
+import { IView } from "../../../domain/interfaces/IView";
+import { prompt } from "../../../utils/prompt";
 
 export class MenuConsole implements IView {
 
     constructor(
-        private studentMenu: IView,
-        private bookMenu: IView,
-        private loanMenu: IView
+        private studentmenu: IView,
+        private bookmenu: IView,
+        private loanmenu: IView
     ) { }
 
     execute() {
@@ -22,15 +22,15 @@ export class MenuConsole implements IView {
             switch (option) {
 
                 case 1:
-                    this.studentMenu.execute();
+                    this.studentmenu.execute();
                     break;
 
                 case 2:
-                    this.bookMenu.execute();
+                    this.bookmenu.execute();
                     break;
 
                 case 3:
-                    this.loanMenu.execute();
+                    this.loanmenu.execute();
                     break;
 
                 case 0:

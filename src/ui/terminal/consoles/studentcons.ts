@@ -1,7 +1,7 @@
-import { IView } from "../../../../core/interfaces/IView";
-import { IAdditionalAction } from "../../../../core/interfaces/IAction";
-import { Student } from "../../../../types/Student";
-import { prompt } from "../../../../utils/prompt";
+import { IView } from "../../../domain/interfaces/IView";
+import { IAdditionalAction } from "../../../domain/interfaces/IAction";
+import { Student } from "../../../domain/types/Student";
+import { prompt } from "../../../utils/prompt";
 
 export class StudentConsole implements IView {
 
@@ -20,23 +20,23 @@ export class StudentConsole implements IView {
             switch (option) {
 
                 case 1:
-                    this.create();
+                    this.createstudent();
                     break;
 
                 case 2:
-                    this.delete();
+                    this.deletestudent();
                     break;
 
                 case 3:
-                    this.read();
+                    this.readstudents();
                     break;
 
                 case 4:
-                    this.update();
+                    this.updatestudent();
                     break;
 
                 case 5:
-                    this.findbyid();
+                    this.findbyidstudent();
                     break;
 
                 case 0:
@@ -62,7 +62,7 @@ export class StudentConsole implements IView {
         }
     }
 
-    private readStudent(): Student {
+    private inputstudent(): Student {
 
         const id = prompt("ID: ");
         const name = prompt("Nombre: ");
@@ -79,9 +79,9 @@ export class StudentConsole implements IView {
 
     }
 
-    private create() {
+    private createstudent() {
 
-        const student = this.readStudent();
+        const student = this.inputstudent();
 
         const status = this.studentservice.create(student);
 
@@ -93,7 +93,7 @@ export class StudentConsole implements IView {
 
     }
 
-    private delete() {
+    private deletestudent() {
 
         const id = prompt("ID: ");
 
@@ -107,9 +107,9 @@ export class StudentConsole implements IView {
 
     }
 
-    private update() {
+    private updatestudent() {
 
-        const student = this.readStudent();
+        const student = this.inputstudent();
 
         const status = this.studentservice.update(student);
 
@@ -121,7 +121,7 @@ export class StudentConsole implements IView {
 
     }
 
-    private findbyid() {
+    private findbyidstudent() {
 
         const id = prompt("ID: ");
 
@@ -138,7 +138,7 @@ export class StudentConsole implements IView {
 
     }
 
-    private read() {
+    private readstudents() {
 
         console.table(
             this.studentservice.read()
