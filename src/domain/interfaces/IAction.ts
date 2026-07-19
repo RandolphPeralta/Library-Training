@@ -9,5 +9,5 @@ export interface IAction<T> extends ISave<T>{
 }
 
 export interface IAdditionalAction<T> extends IAction<T> {
-  findbyid(id: string): Array<T>
+  findbyid(id: string): Array<T>;
 }
