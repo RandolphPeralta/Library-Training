@@ -1,7 +1,7 @@
-import { IExtraAction } from "../../../../core/interfaces/IExtra";
-import { Loan } from "../../../../types/Loan";
-import { Student } from "../../../../types/Student";
-import { Book } from "../../../../types/Book";
+import { IExtraAction } from "../domain/interfaces/IExtra";
+import { Loan } from "../domain/types/Loan";
+import { Student } from "../domain/types/Student";
+import { Book } from "../domain/types/Book";
 
 export class Loannegocy implements IExtraAction<Loan> {
 

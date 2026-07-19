@@ -1,11 +1,9 @@
-import { IAdditionalAction } from "../../../../core/interfaces/IAction";
-import { Book } from "../../../../types/Book";
+import { IAdditionalAction } from "../domain/interfaces/IAction";
+import { Book } from "../domain/types/Book";
 
 export class Booknegocy implements IAdditionalAction<Book> {
 
-    constructor(
-        private bookservice: IAdditionalAction<Book>
-    ) { }
+    constructor(private bookservice: IAdditionalAction<Book>) { }
 
     create(book: Book): boolean {
 
