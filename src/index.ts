@@ -1,7 +1,7 @@
 import { Book } from "./domain/types/Book";
 import { Student } from "./domain/types/Student";
 import { Loan } from "./domain/types/Loan";
-import { MemoryRAM } from "./infrastructure/Memoryextra";
+import { MemoryRAM } from "./infrastructure/Memory";
 import { Studentnegocy } from "./services/studenusecase";
 import { Booknegocy } from "./services/bookusecase";
 import { Loannegocy } from "./services/loanusecase";
@@ -21,7 +21,7 @@ const loanusecase = new Loannegocy(MemoryLoan, MemoryBook, MemoryStudent);
 
 const studentconsole = new StudentConsole(studentusecase);
 const bookconsole = new BookConsole(bookusecase);
-const loanconsole = new LoanConsole(loanusecase);
+const loanconsole = new LoanConsole(loanusecase, bookusecase, studentusecase);
 
 const menu = new MenuConsole(studentconsole, bookconsole, loanconsole);
 
