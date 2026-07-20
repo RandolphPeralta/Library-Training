@@ -1,14 +1,15 @@
 import { IView } from "../../../domain/interfaces/IView";
-import { IAdditionalAction} from "../../../domain/interfaces/IAction";
-import { Student } from "../../../domain/types/Student";
-import { Book } from "../../../domain/types/Book";
-import { Loan } from "../../../domain/types/Loan";
+import { IAdditionalAction } from "../../../domain/interfaces/IAction";
+import { Student } from "../../../infrastructure/types/Student";
+import { Book } from "../../../infrastructure/types/Book";
+import { Loan } from "../../../infrastructure/types/Loan";
 import { prompt } from "../../../utils/prompt";
 
 export class LoanConsole implements IView {
 
-    constructor(private loanservice: IAdditionalAction<Loan>, 
-        private bookservice: IAdditionalAction<Book>, 
+    constructor(
+        private loanservice: IAdditionalAction<Loan>,
+        private bookservice: IAdditionalAction<Book>,
         private studentservice: IAdditionalAction<Student>) { }
 
     execute() {

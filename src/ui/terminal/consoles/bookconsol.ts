@@ -1,6 +1,6 @@
 import { IView } from "../../../domain/interfaces/IView";
 import { IAdditionalAction } from "../../../domain/interfaces/IAction";
-import { Book } from "../../../domain/types/Book";
+import { Book } from "../../../infrastructure/types/Book";
 import { prompt } from "../../../utils/prompt";
 
 export class BookConsole implements IView {
