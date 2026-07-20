@@ -4,9 +4,9 @@ import { prompt } from "../../../utils/prompt";
 export class MenuConsole implements IView {
 
     constructor(
-        private studentmenu: IView,
-        private bookmenu: IView,
-        private loanmenu: IView
+        private studentMenu: IView,
+        private bookMenu: IView,
+        private loanMenu: IView
     ) { }
 
     execute() {
@@ -22,15 +22,15 @@ export class MenuConsole implements IView {
             switch (option) {
 
                 case 1:
-                    this.studentmenu.execute();
+                    this.studentMenu.execute();
                     break;
 
                 case 2:
-                    this.bookmenu.execute();
+                    this.bookMenu.execute();
                     break;
 
                 case 3:
-                    this.loanmenu.execute();
+                    this.loanMenu.execute();
                     break;
 
                 case 0:
