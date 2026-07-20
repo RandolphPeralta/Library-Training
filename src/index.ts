@@ -1,15 +1,15 @@
-import { Book } from "./infrastructure/types/Book";
-import { Student } from "./infrastructure/types/Student";
-import { Loan } from "./infrastructure/types/Loan";
+import { Book } from "./types/Book";
+import { Student } from "./types/Student";
+import { Loan } from "./types/Loan";
 import { MemoryRAM } from "./infrastructure/persistence/Memory";
-import { Studentnegocy } from "./services/studenusecase";
-import { Booknegocy } from "./services/bookusecase";
-import { Loannegocy } from "./services/loanusecase";
+import { Studentnegocy } from "./application/services/studentservice";
+import { Booknegocy } from "./application/services/bookservice";
+import { Loannegocy } from "./application/services/loanservice";
 import { StudentConsole } from "./ui/terminal/consoles/studentconsol";
 import { BookConsole } from "./ui/terminal/consoles/bookconsol";
 import { LoanConsole } from "./ui/terminal/consoles/loanconsol";
 import { MenuConsole } from "./ui/terminal/menu/Menuconsole";
-import { App } from "./ui/app/app";
+import { App } from "./application/app/app";
 
 const MemoryBook = new MemoryRAM<Book>();
 const MemoryStudent = new MemoryRAM<Student>();
