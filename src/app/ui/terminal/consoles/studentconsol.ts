@@ -1,7 +1,7 @@
 import { IView } from "../../../domain/interfaces/IView";
 import { IAdditionalAction } from "../../../domain/interfaces/IAction";
 import { Student } from "../../../domain/types/Student";
-import { prompt } from "../../../utils/prompt";
+import { prompt } from "../../../../utils/prompt";
 
 export class StudentConsole implements IView {
 

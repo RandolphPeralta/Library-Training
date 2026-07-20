@@ -1,5 +1,5 @@
 import { IView } from "../../../domain/interfaces/IView";
-import { prompt } from "../../../utils/prompt";
+import { prompt } from "../../../../utils/prompt";
 
 export class MenuConsole implements IView {
 
