@@ -3,9 +3,7 @@ import { Book } from "../../domain/types/Book";
 
 export class Booknegocy implements IAdditionalAction<Book> {
 
-    constructor(
-        private bookservice: IAdditionalAction<Book>
-    ) { }
+    constructor(private bookservice: IAdditionalAction<Book>) { }
 
     create(book: Book): boolean {
 
