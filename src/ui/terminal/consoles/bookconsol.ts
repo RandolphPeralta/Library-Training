@@ -20,19 +20,19 @@ export class BookConsole implements IView {
             switch (option) {
 
                 case 1:
-                    this.create();
+                    this.createbook();
                     break;
 
                 case 2:
-                    this.delete();
+                    this.deletebook();
                     break;
 
                 case 3:
-                    this.read();
+                    this.readbook();
                     break;
 
                 case 4:
-                    this.update();
+                    this.updatebook();
                     break;
 
                 case 5:
@@ -62,7 +62,7 @@ export class BookConsole implements IView {
         }
     }
 
-    private readBook(): Book {
+    private inputbook(): Book {
 
         const id = prompt("ID: ");
         const title = prompt("Titulo: ");
@@ -79,11 +79,11 @@ export class BookConsole implements IView {
 
     }
 
-    private create() {
+    private createbook() {
 
-        const book = this.readBook();
+        const student = this.inputbook();
 
-        const status = this.bookservice.create(book);
+        const status = this.bookservice.create(student);
 
         if (status) {
             console.log("Libro registrado");
@@ -93,7 +93,29 @@ export class BookConsole implements IView {
 
     }
 
-    private delete() {
+    private readbook() {
+
+        console.table(
+            this.bookservice.read()
+        );
+
+    }
+
+    private updatebook() {
+
+        const book = this.inputbook();
+
+        const status = this.bookservice.update(book);
+
+        if (status) {
+            console.log("Libro actualizado");
+        } else {
+            console.log("No existe un libro con ese ID.");
+        }
+
+    }
+
+    private deletebook() {
 
         const id = prompt("ID: ");
 
@@ -107,19 +129,7 @@ export class BookConsole implements IView {
 
     }
 
-    private update() {
 
-        const book = this.readBook();
-
-        const status = this.bookservice.update(book);
-
-        if (status) {
-            console.log("Libro actualizado");
-        } else {
-            console.log("No existe un libro con ese ID.");
-        }
-
-    }
 
     private findbyid() {
 
@@ -135,14 +145,6 @@ export class BookConsole implements IView {
         }
 
         console.table(books);
-
-    }
-
-    private read() {
-
-        console.table(
-            this.bookservice.read()
-        );
 
     }
 

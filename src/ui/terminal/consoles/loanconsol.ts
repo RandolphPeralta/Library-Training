@@ -1,11 +1,15 @@
 import { IView } from "../../../domain/interfaces/IView";
-import { IExtraAction } from "../../../domain/interfaces/IExtra";
+import { IAdditionalAction} from "../../../domain/interfaces/IAction";
+import { Student } from "../../../domain/types/Student";
+import { Book } from "../../../domain/types/Book";
 import { Loan } from "../../../domain/types/Loan";
 import { prompt } from "../../../utils/prompt";
 
 export class LoanConsole implements IView {
 
-    constructor(private loanservice: IExtraAction<Loan>) { }
+    constructor(private loanservice: IAdditionalAction<Loan>, 
+        private bookservice: IAdditionalAction<Book>, 
+        private studentservice: IAdditionalAction<Student>) { }
 
     execute() {
         let run = true;
@@ -19,11 +23,11 @@ export class LoanConsole implements IView {
             switch (option) {
 
                 case 1:
-                    this.create();
+                    this.lendbook();
                     break;
 
                 case 2:
-                    this.delete();
+                    this.returnbook();
                     break;
 
                 case 3:
@@ -61,13 +65,22 @@ export class LoanConsole implements IView {
         }
     }
 
-    private create() {
+    private lendbook() {
 
-        const idBook = prompt("ID Libro: ");
+        const idbook = prompt("ID Libro: ");
 
-        const idStudent = prompt("ID Estudiante: ");
+        const idstudent = prompt("ID Estudiante: ");
 
-        const status = this.loanservice.createbyid(idBook, idStudent);
+        const loan: Loan = {
+
+            id: Math.random().toString(),
+            book: this.bookservice.findbyid(idbook)[0],
+            student: this.studentservice.findbyid(idstudent)[0],
+            loanDate: new Date()
+
+        };
+
+        const status = this.loanservice.create(loan);
 
         if (status) {
 
@@ -81,7 +94,7 @@ export class LoanConsole implements IView {
 
     }
 
-    private delete() {
+    private returnbook() {
 
         const idBook = prompt("ID Libro: ");
 
@@ -126,7 +139,15 @@ export class LoanConsole implements IView {
             prompt("Fecha (YYYY-MM-DD): ")
         );
 
-        const status = this.loanservice.updatebyid(id, date);
+        const loan: Loan = {
+            id: id,
+            book: this.loanservice.findbyid(id)[0].book,
+            student: this.loanservice.findbyid(id)[0].student,
+            loanDate: this.loanservice.findbyid(id)[0].loanDate,
+            returndate: date
+        };
+
+        const status = this.loanservice.update(loan);
 
         console.log(
             status
@@ -138,19 +159,27 @@ export class LoanConsole implements IView {
 
     private findbyid() {
 
-        const idBook = prompt("ID Libro: ");
+        const idloan = prompt("ID del prestamo: ");
 
-        const loan = this.loanservice.findbyid(idBook);
+        const loan = this.loanservice.findbyid(idloan);
 
         if (!loan) {
 
-            console.log("No existe prestamo");
+            console.log("Libro disponible");
 
             return;
 
         }
 
-        console.table(loan);
+        loan.forEach(loan => {
+            console.log({
+                id: loan.id,
+                Book: loan.book.title,
+                Student: loan.student.name,
+                fechaLoan: loan.loanDate,
+                fechaDevolucion: loan.returndate || "Pendiente"
+            })
+        })
 
     }
 }
