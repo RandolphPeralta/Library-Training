@@ -1,8 +1,8 @@
 import { IView } from "../../../domain/interfaces/IView";
 import { IAdditionalAction } from "../../../domain/interfaces/IAction";
-import { Student } from "../../../infrastructure/types/Student";
-import { Book } from "../../../infrastructure/types/Book";
-import { Loan } from "../../../infrastructure/types/Loan";
+import { Student } from "../../../types/Student";
+import { Book } from "../../../types/Book";
+import { Loan } from "../../../types/Loan";
 import { prompt } from "../../../utils/prompt";
 
 export class LoanConsole implements IView {
