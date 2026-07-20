@@ -1,5 +1,5 @@
-import { IAdditionalAction } from "../domain/interfaces/IAction";
-import { Book } from "../infrastructure/types/Book";
+import { IAdditionalAction } from "../../domain/interfaces/IAction";
+import { Book } from "../../types/Book";
 
 export class Booknegocy implements IAdditionalAction<Book> {
 
