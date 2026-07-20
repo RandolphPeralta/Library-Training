@@ -1,6 +1,6 @@
-import { Book } from "./types/Book";
-import { Student } from "./types/Student";
-import { Loan } from "./types/Loan";
+import { Book } from "./domain/types/Book";
+import { Student } from "./domain/types/Student";
+import { Loan } from "./domain/types/Loan";
 import { MemoryRAM } from "./infrastructure/persistence/Memory";
 import { Studentnegocy } from "./application/services/studentservice";
 import { Booknegocy } from "./application/services/bookservice";
