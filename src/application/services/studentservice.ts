@@ -1,5 +1,5 @@
 import { IAdditionalAction } from "../../domain/interfaces/IAction";
-import { Student } from "../../types/Student";
+import { Student } from "../../domain/types/Student";
 
 export class Studentnegocy implements IAdditionalAction<Student> {
 

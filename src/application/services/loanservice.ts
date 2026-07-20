@@ -1,7 +1,7 @@
 import { IAdditionalAction } from "../../domain/interfaces/IAction";
-import { Loan } from "../../types/Loan";
-import { Student } from "../../types/Student";
-import { Book } from "../../types/Book";
+import { Loan } from "../../domain/types/Loan";
+import { Student } from "../../domain/types/Student";
+import { Book } from "../../domain/types/Book";
 
 export class Loannegocy implements IAdditionalAction<Loan> {
 
