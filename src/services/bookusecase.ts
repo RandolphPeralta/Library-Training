@@ -3,7 +3,9 @@ import { Book } from "../domain/types/Book";
 
 export class Booknegocy implements IAdditionalAction<Book> {
 
-    constructor(private bookservice: IAdditionalAction<Book>) { }
+    constructor(
+        private bookservice: IAdditionalAction<Book>
+    ) { }
 
     create(book: Book): boolean {
 
@@ -24,6 +26,11 @@ export class Booknegocy implements IAdditionalAction<Book> {
 
     update(book: Book): boolean {
 
+        const available = book.available
+
+        if (!available) {
+            return false
+        }
         const existing = this.bookservice.findbyid(book.id);
 
         if (existing.length === 0) {

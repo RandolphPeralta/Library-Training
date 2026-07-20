@@ -1,60 +1,47 @@
-import { IExtraAction } from "../domain/interfaces/IExtra";
+import { IAdditionalAction } from "../domain/interfaces/IAction";
 import { Loan } from "../domain/types/Loan";
 import { Student } from "../domain/types/Student";
 import { Book } from "../domain/types/Book";
 
-export class Loannegocy implements IExtraAction<Loan> {
+export class Loannegocy implements IAdditionalAction<Loan> {
 
-    constructor(private loanservice: IExtraAction<Loan>, private bookservice: IExtraAction<Book>, private studentservice: IExtraAction<Student>) { }
+    constructor(private loanservice: IAdditionalAction<Loan>, private bookservice: IAdditionalAction<Book>, private studentservice: IAdditionalAction<Student>) { }
 
-    create(Loan: Loan) {
-        const existingLoan = this.loanservice.findbyid(Loan.id);
-        if (existingLoan.length > 0) {
-            return false
-        }
-        this.loanservice.create(Loan);
-        return true
-    }
-
-    createbyid(idBook: string, idStudent: string): boolean {
-
-        const book = this.bookservice.findbyid(idBook)[0];
-
-        if (!book) {
+    create(loan: Loan): boolean {
+        const book = loan.book;
+        if (!book || !book.available) {
             return false;
         }
 
-        if (!book.available) {
+        const findbook = this.bookservice.findbyid(book.id)[0];
+        if (!findbook) {
             return false;
         }
 
-        const student = this.studentservice.findbyid(idStudent)[0];
-
+        const student = loan.student;
         if (!student) {
             return false;
         }
 
-        const loan: Loan = {
+        const existingLoan = this.loanservice.findbyid(loan.id);
+        if (existingLoan.length > 0) {
+            return false;
+        }
 
-            id: Math.random().toString(),
-            book,
-            student,
-            loanDate: new Date()
-
-        };
-
-        const status = this.create(loan);
-
+        const status = this.loanservice.create(loan);
         if (!status) {
             return false;
         }
 
         book.available = false;
-
         this.bookservice.update(book);
 
         return true;
+    }
 
+
+    findbyid(idloan: string): Loan[] {
+        return this.loanservice.findbyid(idloan)
     }
 
     update(loan: Loan) {
@@ -67,20 +54,12 @@ export class Loannegocy implements IExtraAction<Loan> {
         }
     }
 
-    updatebyid(id: any, date: Date) {
-        const loan = this.loanservice.findbyid(id)[0];
-
-        if (!loan) {
-            return false;
-        }
-
-        loan.loanDate = date;
-
-        return this.update(loan);
+    read(): Loan[] {
+        return this.loanservice.read();
     }
-
-    delete(idBook: string) {
-        const loan = this.loanservice.read().find(loan => loan.book.id === idBook && !loan.returndate);
+    
+    delete(idbook: any) {
+        const loan = this.loanservice.read().find(loan => loan.book.id === idbook && !loan.returndate);
 
         if (!loan) {
             return false;
@@ -95,14 +74,6 @@ export class Loannegocy implements IExtraAction<Loan> {
         this.bookservice.update(loan.book);
 
         return true;
-    }
-
-    read(): Loan[] {
-        return this.loanservice.read();
-    }
-
-    findbyid(idBook: string): Loan[] {
-        return this.loanservice.findbyid(idBook);
     }
 
 }
