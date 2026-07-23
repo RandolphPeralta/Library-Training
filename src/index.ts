@@ -2,9 +2,9 @@ import { Book } from "./app/domain/types/Book";
 import { Student } from "./app/domain/types/Student";
 import { Loan } from "./app/domain/types/Loan";
 import { MemoryRAM } from "./app/infrastructure/persistence/Memory";
-import { Studentnegocy } from "./app/application/services/studentservice";
-import { Booknegocy } from "./app/application/services/bookservice";
-import { Loannegocy } from "./app/application/services/loanservice";
+import { Studentservice } from "./app/application/services/studentservice";
+import { Bookservice } from "./app/application/services/bookservice";
+import { Loanservice } from "./app/application/services/loanservice";
 import { StudentConsole } from "./app/ui/terminal/consoles/studentconsol";
 import { BookConsole } from "./app/ui/terminal/consoles/bookconsol";
 import { LoanConsole } from "./app/ui/terminal/consoles/loanconsol";
@@ -15,13 +15,13 @@ const MemoryBook = new MemoryRAM<Book>();
 const MemoryStudent = new MemoryRAM<Student>();
 const MemoryLoan = new MemoryRAM<Loan>();
 
-const studentusecase = new Studentnegocy(MemoryStudent);
-const bookusecase = new Booknegocy(MemoryBook);
-const loanusecase = new Loannegocy(MemoryLoan, MemoryBook, MemoryStudent);
+const studentservice = new Studentservice(MemoryStudent);
+const bookservice = new Bookservice(MemoryBook);
+const loanservice = new Loanservice(MemoryLoan, MemoryBook, MemoryStudent);
 
-const studentconsole = new StudentConsole(studentusecase);
-const bookconsole = new BookConsole(bookusecase);
-const loanconsole = new LoanConsole(loanusecase, bookusecase, studentusecase);
+const studentconsole = new StudentConsole(studentservice);
+const bookconsole = new BookConsole(bookservice);
+const loanconsole = new LoanConsole(loanservice, bookservice, studentservice);
 
 const menu = new MenuConsole(studentconsole, bookconsole, loanconsole);
 
