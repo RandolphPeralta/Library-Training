@@ -1,7 +1,7 @@
 import { IAdditionalAction } from "../../domain/interfaces/IAction";
 import { Book } from "../../domain/types/Book";
 
-export class Booknegocy implements IAdditionalAction<Book> {
+export class Bookservice implements IAdditionalAction<Book> {
 
     constructor(private bookservice: IAdditionalAction<Book>) { }
 

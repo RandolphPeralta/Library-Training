@@ -3,7 +3,7 @@ import { Loan } from "../../domain/types/Loan";
 import { Student } from "../../domain/types/Student";
 import { Book } from "../../domain/types/Book";
 
-export class Loannegocy implements IAdditionalAction<Loan> {
+export class Loanservice implements IAdditionalAction<Loan> {
 
     constructor(private loanservice: IAdditionalAction<Loan>, private bookservice: IAdditionalAction<Book>, private studentservice: IAdditionalAction<Student>) { }
 
@@ -33,8 +33,8 @@ export class Loannegocy implements IAdditionalAction<Loan> {
             return false;
         }
 
-        book.available = false;
-        this.bookservice.update(book);
+        findbook.available = false;
+        this.bookservice.update(findbook);
 
         return true;
     }
@@ -59,7 +59,7 @@ export class Loannegocy implements IAdditionalAction<Loan> {
     }
     
     delete(idbook: any) {
-        const loan = this.loanservice.read().find(loan => loan.book.id === idbook && !loan.returndate);
+        const loan = this.loanservice.read().find(loan => loan.book.id === idbook);
 
         if (!loan) {
             return false;
