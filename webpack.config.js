@@ -32,7 +32,7 @@ module.exports = {
 
   devServer: {
     static: {
-      directory: path.join(__dirname, "src/ui/web")
+      directory: path.join(__dirname, "src/app/ui/web")
     },
     open: true,
     port: 8000
