@@ -1,4 +1,4 @@
-import { IView } from "./domain/interfaces/IView";
+import { IView } from "./entities/interfaces/IView";
 
 export class App {
   constructor(private menu: IView) { }

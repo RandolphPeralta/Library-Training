@@ -1,7 +1,7 @@
-import { IAdditionalAction } from "../../domain/interfaces/IAction";
-import { Book } from "../../domain/types/Book";
+import { IAdditionalAction } from "../entities/interfaces/IAction";
+import { Book } from "../entities/types/Book";
 
-export class Bookservice implements IAdditionalAction<Book> {
+export class Bookusecase implements IAdditionalAction<Book> {
 
     constructor(private bookservice: IAdditionalAction<Book>) { }
 

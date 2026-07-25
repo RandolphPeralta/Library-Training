@@ -1,4 +1,4 @@
-import { IAdditionalAction } from "../../domain/interfaces/IAction";
+import { IAdditionalAction } from "../../entities/interfaces/IAction";
 
 export class MemoryRAM<T> implements IAdditionalAction<T> {
 

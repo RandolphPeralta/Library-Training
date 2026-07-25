@@ -1,9 +1,9 @@
-import { IAdditionalAction } from "../../domain/interfaces/IAction";
-import { Loan } from "../../domain/types/Loan";
-import { Student } from "../../domain/types/Student";
-import { Book } from "../../domain/types/Book";
+import { IAdditionalAction } from "../entities/interfaces/IAction";
+import { Loan } from "../entities/types/Loan";
+import { Student } from "../entities/types/Student";
+import { Book } from "../entities/types/Book";
 
-export class Loanservice implements IAdditionalAction<Loan> {
+export class Loanusecase implements IAdditionalAction<Loan> {
 
     constructor(private loanservice: IAdditionalAction<Loan>, private bookservice: IAdditionalAction<Book>, private studentservice: IAdditionalAction<Student>) { }
 
