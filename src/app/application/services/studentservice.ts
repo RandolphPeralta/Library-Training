@@ -1,6 +1,7 @@
-import { IAdditionalAction } from "../entities/interfaces/IAction";
-import { Student } from "../entities/types/Student";
-export class Studentusecase implements IAdditionalAction<Student> {
+import { IAdditionalAction } from "../../domain/interfaces/IAction";
+import { Student } from "../../domain/types/Student";
+
+export class Studentservice implements IAdditionalAction<Student> {
 
     constructor(private studentPersistence: IAdditionalAction<Student>) { }
 
