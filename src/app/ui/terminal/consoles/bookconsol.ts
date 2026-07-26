@@ -5,7 +5,7 @@ import { prompt } from "../../../../utils/prompt";
 
 export class BookConsole implements IView {
 
-    constructor(private bookservice: IAdditionalAction<Book>) { }
+    constructor(private bookrepository: IAdditionalAction<Book>) { }
 
     execute() {
 
@@ -76,76 +76,55 @@ export class BookConsole implements IView {
             available
 
         };
-
     }
 
     private createbook() {
+        const book = this.inputbook();
+        const existingbook = this.bookrepository.findbyid(book.id);
 
-        const student = this.inputbook();
-
-        const status = this.bookservice.create(student);
-
-        if (status) {
-            console.log("Libro registrado");
+        if (existingbook.length > 0) {
+            console.log("El libro ya existe con este id.");
         } else {
-            console.log("El libro ya existe.");
+            this.bookrepository.create(book);
+            console.log("Libro registrado");
         }
-
     }
 
     private readbook() {
-
-        console.table(
-            this.bookservice.read()
-        );
-
+        console.table(this.bookrepository.read());
     }
 
     private updatebook() {
-
         const book = this.inputbook();
+        const existing = this.bookrepository.findbyid(book.id);
 
-        const status = this.bookservice.update(book);
-
-        if (status) {
-            console.log("Libro actualizado");
-        } else {
+        if (existing.length === 0) {
             console.log("No existe un libro con ese ID.");
+        } else {
+            this.bookrepository.update(book);
+            console.log("Libro actualizado");
         }
-
     }
 
     private deletebook() {
-
         const id = prompt("ID: ");
-
-        const status = this.bookservice.delete(id);
+        const status = this.bookrepository.delete(id);
 
         if (status) {
             console.log("Libro eliminado");
         } else {
             console.log("No existe un libro con este id.");
         }
-
     }
-
-
 
     private findbyid() {
-
         const id = prompt("ID: ");
-
-        const books = this.bookservice.findbyid(id);
+        const books = this.bookrepository.findbyid(id);
 
         if (books.length === 0) {
-
             console.log("No encontrado");
             return;
-
         }
-
         console.table(books);
-
     }
-
 }

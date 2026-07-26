@@ -5,7 +5,7 @@ import { prompt } from "../../../../utils/prompt";
 
 export class StudentConsole implements IView {
 
-    constructor(private studentservice: IAdditionalAction<Student>) { }
+    constructor(private studentrepository: IAdditionalAction<Student>) { }
 
     execute() {
 
@@ -28,7 +28,7 @@ export class StudentConsole implements IView {
                     break;
 
                 case 3:
-                    this.readstudents();
+                    this.readstudent();
                     break;
 
                 case 4:
@@ -80,24 +80,20 @@ export class StudentConsole implements IView {
     }
 
     private createstudent() {
-
         const student = this.inputstudent();
+        const existing = this.studentrepository.findbyid(student.id);
 
-        const status = this.studentservice.create(student);
-
-        if (status) {
-            console.log("Estudiante registrado");
+        if (existing.length > 0) {
+            console.log("El estudiante ya existe con este id");
         } else {
-            console.log("El estudiante ya existe.");
+            this.studentrepository.create(student);
+            console.log("Estudiante registrado")
         }
-
     }
 
     private deletestudent() {
-
         const id = prompt("ID: ");
-
-        const status = this.studentservice.delete(id);
+        const status = this.studentrepository.delete(id);
 
         if (status) {
             console.log("Estudiante eliminado");
@@ -108,41 +104,32 @@ export class StudentConsole implements IView {
     }
 
     private updatestudent() {
-
         const student = this.inputstudent();
+        const existing = this.studentrepository.findbyid(student.id);
 
-        const status = this.studentservice.update(student);
-
-        if (status) {
-            console.log("Estudiante actualizado");
+        if (existing.length === 0) {
+            console.log("Este estudiante no exite con este id")
         } else {
-            console.log("No existe un estudiante con ese ID.");
+            this.studentrepository.update(student)
+            console.log("Estudiante actualizado");
         }
-
     }
 
     private findbyidstudent() {
-
         const id = prompt("ID: ");
-
-        const students = this.studentservice.findbyid(id);
+        const students = this.studentrepository.findbyid(id);
 
         if (students.length === 0) {
 
             console.log("No encontrado");
             return;
-
         }
 
         console.table(students);
-
     }
 
-    private readstudents() {
-
-        console.table(
-            this.studentservice.read()
-        );
+    private readstudent() {
+        console.table(this.studentrepository.read());
 
     }
 
