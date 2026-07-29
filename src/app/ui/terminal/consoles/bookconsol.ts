@@ -76,7 +76,7 @@ export class Bookconsole implements IView {
 
     private registerbook() {
         const student = this.inputbook();
-        const result = this.bookusecase.register(student);
+        const result: boolean = this.bookusecase.register(student);
         if (!result) {
             console.log("El libro ya existe con este id")
         } else {
@@ -89,7 +89,7 @@ export class Bookconsole implements IView {
         if (!id || id.trim() === "") {
             throw new Error("El ID no puede estar vacío");
         }
-        const status = this.bookusecase.erase(id);
+        const status: boolean = this.bookusecase.erase(id);
         if (!status) {
             console.log("El libro no se encuentra con este id")
         } else {
@@ -99,7 +99,7 @@ export class Bookconsole implements IView {
 
     private actualizebook() {
         const student = this.inputbook();
-        const existing = this.bookusecase.actualize(student);
+        const existing: boolean = this.bookusecase.actualize(student);
         if (!existing) {
             console.log("El Libro no fue encontrado y no fue actualizado")
         } else {

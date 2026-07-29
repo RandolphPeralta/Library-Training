@@ -33,8 +33,4 @@ export class StudentUseCase implements IStudentUseCase {
     show(): Student[] {
         return this.studentRepository.read();
     }
-
-    getById(id: string) {
-        return this.studentRepository.findbyid(id)[0];
-    }
 }

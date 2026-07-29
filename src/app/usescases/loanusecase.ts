@@ -30,15 +30,12 @@ export class Loanusecase implements IUsecaseloan {
         }
 
         const loanDate = new Date();
-        const returndate = new Date(loanDate);
-        returndate.setDate(loanDate.getDate() + 3);
 
         const loan: Loan = {
             id: Math.random().toString(),
             book,
             student,
-            loanDate,
-            returndate
+            loanDate
         };
 
         const existingLoan = this.loanrepository.findbyid(loan.id);
@@ -70,6 +67,6 @@ export class Loanusecase implements IUsecaseloan {
     }
 
     show() {
-        return this.loanrepository.read()
+        return this.loanrepository.read();
     }
 }

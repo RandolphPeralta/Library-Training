@@ -53,22 +53,22 @@ export class Studentconsole implements IView {
 
         const id = prompt("ID: ");
         if (!id || id.trim() === "") {
-            throw new Error("El ID no puede estar vacío");
+            console.log("El ID no puede estar vacío");
         }
 
         const name = prompt("Nombre: ");
         if (!/^[a-zA-Z\s]+$/.test(name)) {
-            throw new Error("El nombre solo puede contener letras");
+            console.log("El nombre solo puede contener letras");
         }
 
         const identification = prompt("Identificación: ");
         if (!/^\d+$/.test(identification)) {
-            throw new Error("La identificación debe ser numérica");
+            console.log("La identificación debe ser numérica");
         }
 
         const schoolgrade = prompt("Grado Escolar: ");
         if (!schoolgrade || schoolgrade.trim() === "") {
-            throw new Error("El grado escolar no puede estar vacío");
+            console.log("El grado escolar no puede estar vacío");
         }
 
         return { id, name, identification, schoolgrade };
@@ -76,7 +76,7 @@ export class Studentconsole implements IView {
 
     private registerStudent() {
         const student = this.inputstudent();
-        const result = this.studentusecase.register(student);
+        const result: boolean = this.studentusecase.register(student);
         if (!result) {
             console.log("El estudiante no se puede registrar")
         } else {
@@ -89,7 +89,7 @@ export class Studentconsole implements IView {
         if (!id || id.trim() === "") {
             throw new Error("El ID no puede estar vacío");
         }
-        const status = this.studentusecase.erase(id);
+        const status: boolean = this.studentusecase.erase(id);
         if (!status) {
             console.log("El estudiante no se encuentra con este id")
         } else {
@@ -99,7 +99,7 @@ export class Studentconsole implements IView {
 
     private actualizestudent() {
         const student = this.inputstudent();
-        const existing = this.studentusecase.actualize(student);
+        const existing: boolean = this.studentusecase.actualize(student);
         if (!existing) {
             console.log("El estudiante no fue actualizado")
         } else {

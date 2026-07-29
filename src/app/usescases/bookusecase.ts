@@ -15,7 +15,7 @@ export class BookUseCase implements IBookUseCase {
     }
 
     erase(id: string) {
-        const book = this.getById(id);
+        const book = this.bookRepository.findbyid(id)[0];
         if (!book) { return false; }
 
         if (!book.available) {
@@ -26,7 +26,7 @@ export class BookUseCase implements IBookUseCase {
     }
 
     actualize(book: Book): boolean {
-        const newbook = this.getById(book.id);
+        const newbook = this.bookRepository.findbyid(book.id)[0];
         if (!newbook.available) {
             return false;
         }
@@ -35,9 +35,5 @@ export class BookUseCase implements IBookUseCase {
 
     show(): Book[] {
         return this.bookRepository.read();
-    }
-
-    getById(id: string) {
-        return this.bookRepository.findbyid(id)[0];
     }
 }

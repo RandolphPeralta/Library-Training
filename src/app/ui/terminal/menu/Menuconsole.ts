@@ -48,7 +48,7 @@ export class MenuConsole implements IView {
         const opciones: string[] = [
             "1. Registrar, Eliminar, Ver, Actualizar,  Buscar estudiante",
             "2. Registrar, Eliminar, Ver, Actualizar,  Buscar libro",
-            "3. Prestar libro, Devolver libro,  Mostrar prestamos, Buscar Prestamo, Actualizar Prestamo",
+            "3. Prestar libro, Devolver libro,  Mostrar prestamos",
             "0. Salir"
         ];
         for (const opcion of opciones) {
