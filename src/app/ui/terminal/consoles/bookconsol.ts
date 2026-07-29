@@ -1,59 +1,47 @@
 import { IView } from "../../../domain/interfaces/IView";
-import { IAdditionalAction } from "../../../domain/interfaces/IAction";
+import { IRepository } from "../../../domain/interfaces/IRepository";
 import { Book } from "../../../domain/types/Book";
 import { prompt } from "../../../../utils/prompt";
+import { IBookUseCase } from "../../../domain/interfaces/IUsescases";
 
-export class BookConsole implements IView {
-
-    constructor(private bookrepository: IAdditionalAction<Book>) { }
+export class Bookconsole implements IView {
+    constructor(private bookusecase: IBookUseCase) { }
 
     execute() {
-
         let run = true;
-
         while (run) {
-
             this.showMenu();
-
             const option = Number(prompt("Seleccione: "));
 
             switch (option) {
-
                 case 1:
-                    this.createbook();
+                    this.registerbook();
                     break;
-
                 case 2:
-                    this.deletebook();
+                    this.erasebook();
                     break;
-
                 case 3:
-                    this.readbook();
+                    this.actualizebook();
                     break;
-
                 case 4:
-                    this.updatebook();
-                    break;
-
+                    this.showbook();
+                    break
                 case 5:
-                    this.findbyid();
-                    break;
-
+                    this.searchbook();
+                    break
                 case 0:
                     run = false;
                     break;
             }
-
         }
-
     }
 
     private showMenu(): void {
         const opciones: string[] = [
             "1. Registrar libro",
-            "2. Eliminar libro",
-            "3. Ver libro",
-            "4. Actualizar libro",
+            "2. Borrar libro",
+            "3. Actualizar libro",
+            "4. Mostrar libros",
             "5. Buscar libro",
             "0. Salir"
         ];
@@ -65,66 +53,85 @@ export class BookConsole implements IView {
     private inputbook(): Book {
 
         const id = prompt("ID: ");
+        if (!id || id.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
+        }
         const title = prompt("Titulo: ");
+        if (!title || title.trim() === "") {
+            throw new Error("El titulo no puede estar vacío");
+        }
         const author = prompt("Autor: ");
-        const available = true
+        if (!author || author.trim() === "") {
+            throw new Error("El autor no puede estar vacío");
+        }
+        const available = true;
 
         return {
             id,
             title,
             author,
             available
-
         };
     }
 
-    private createbook() {
-        const book = this.inputbook();
-        const existingbook = this.bookrepository.findbyid(book.id);
-
-        if (existingbook.length > 0) {
-            console.log("El libro ya existe con este id.");
+    private registerbook() {
+        const student = this.inputbook();
+        const result = this.bookusecase.register(student);
+        if (!result) {
+            console.log("El libro ya existe con este id")
         } else {
-            this.bookrepository.create(book);
-            console.log("Libro registrado");
+            console.log("Libro registrado")
         }
     }
 
-    private readbook() {
-        console.table(this.bookrepository.read());
-    }
-
-    private updatebook() {
-        const book = this.inputbook();
-        const existing = this.bookrepository.findbyid(book.id);
-
-        if (existing.length === 0) {
-            console.log("No existe un libro con ese ID.");
-        } else {
-            this.bookrepository.update(book);
-            console.log("Libro actualizado");
-        }
-    }
-
-    private deletebook() {
+    private erasebook() {
         const id = prompt("ID: ");
-        const status = this.bookrepository.delete(id);
-
-        if (status) {
-            console.log("Libro eliminado");
+        if (!id || id.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
+        }
+        const status = this.bookusecase.erase(id);
+        if (!status) {
+            console.log("El libro no se encuentra con este id")
         } else {
-            console.log("No existe un libro con este id.");
+            console.log("Libro eliminado")
         }
     }
 
-    private findbyid() {
-        const id = prompt("ID: ");
-        const books = this.bookrepository.findbyid(id);
-
-        if (books.length === 0) {
-            console.log("No encontrado");
-            return;
+    private actualizebook() {
+        const student = this.inputbook();
+        const existing = this.bookusecase.actualize(student);
+        if (!existing) {
+            console.log("El Libro no fue encontrado y no fue actualizado")
+        } else {
+            console.log("Libro actualizado")
         }
-        console.table(books);
+    }
+
+    private showbook() {
+
+        let books: Book[] = this.bookusecase.show()
+
+        let booksview = books.map(book => ({
+            id: book.id,
+            titulo: book.title,
+            autor: book.author,
+            disponible: book.available ? "Sí" : "No"
+        }));
+
+        console.table(booksview);
+    }
+
+    private searchbook() {
+        const id = prompt("ID: ");
+        if (!id || id.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
+        }
+        let students = this.bookusecase.show();
+        let student = students.filter((item: any) => item.id === id);
+        if (student.length === 0) {
+            console.log("No es posible encontrarlo")
+        } else {
+            console.table(student)
+        }
     }
 }

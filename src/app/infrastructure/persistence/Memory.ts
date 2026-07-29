@@ -1,13 +1,19 @@
-import { IAdditionalAction } from "../../domain/interfaces/IAction";
+import { IRepository } from "../../domain/interfaces/IRepository";
 
-export class MemoryRAM<T> implements IAdditionalAction<T> {
+export class MemoryRAM<T> implements IRepository<T> {
 
   private memory: T[] = [];
 
   create(some: any): boolean {
-    this.memory.push(some)
-    return true;
-  }
+        let index = this.memory.findIndex((item: any) => item.id === some.id);
+
+        if (index !== -1) {
+            return false;
+        }
+
+        this.memory.push(some)
+        return true;
+    }
 
   delete(id: any) {
     let index = this.memory.findIndex((item: any) => item.id === id);

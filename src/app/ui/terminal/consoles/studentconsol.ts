@@ -1,60 +1,47 @@
 import { IView } from "../../../domain/interfaces/IView";
-import { IAdditionalAction } from "../../../domain/interfaces/IAction";
 import { Student } from "../../../domain/types/Student";
 import { prompt } from "../../../../utils/prompt";
+import { IStudentUseCase } from "../../../domain/interfaces/IUsescases";
 
-export class StudentConsole implements IView {
-
-    constructor(private studentrepository: IAdditionalAction<Student>) { }
+export class Studentconsole implements IView {
+    constructor(private studentusecase: IStudentUseCase) { }
 
     execute() {
-
         let run = true;
-
         while (run) {
-
             this.showMenu();
-
             const option = Number(prompt("Seleccione: "));
 
             switch (option) {
-
                 case 1:
-                    this.createstudent();
+                    this.registerStudent();
                     break;
-
                 case 2:
-                    this.deletestudent();
+                    this.erasestudent();
                     break;
-
                 case 3:
-                    this.readstudent();
+                    this.actualizestudent();
                     break;
-
                 case 4:
-                    this.updatestudent();
-                    break;
-
+                    this.showstudent();
+                    break
                 case 5:
-                    this.findbyidstudent();
-                    break;
-
+                    this.searchstudent();
+                    break
                 case 0:
                     run = false;
                     break;
             }
-
         }
-
     }
 
     private showMenu(): void {
         const opciones: string[] = [
             "1. Registrar estudiante",
-            "2. Eliminar estudiante",
-            "3. Ver estudiante",
-            "4. Actualizar estudiante",
-            "5. Buscar estudiante",
+            "2. Borrar estudiante",
+            "3. Actualizar estudiante",
+            "4. Mostrar estudiantes",
+            "5. Buscar estudiate",
             "0. Salir"
         ];
         for (const opcion of opciones) {
@@ -65,72 +52,84 @@ export class StudentConsole implements IView {
     private inputstudent(): Student {
 
         const id = prompt("ID: ");
+        if (!id || id.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
+        }
+
         const name = prompt("Nombre: ");
+        if (!/^[a-zA-Z\s]+$/.test(name)) {
+            throw new Error("El nombre solo puede contener letras");
+        }
+
         const identification = prompt("Identificación: ");
+        if (!/^\d+$/.test(identification)) {
+            throw new Error("La identificación debe ser numérica");
+        }
+
         const schoolgrade = prompt("Grado Escolar: ");
+        if (!schoolgrade || schoolgrade.trim() === "") {
+            throw new Error("El grado escolar no puede estar vacío");
+        }
 
-        return {
-            id,
-            name,
-            identification,
-            schoolgrade
-
-        };
-
+        return { id, name, identification, schoolgrade };
     }
 
-    private createstudent() {
+    private registerStudent() {
         const student = this.inputstudent();
-        const existing = this.studentrepository.findbyid(student.id);
-
-        if (existing.length > 0) {
-            console.log("El estudiante ya existe con este id");
+        const result = this.studentusecase.register(student);
+        if (!result) {
+            console.log("El estudiante no se puede registrar")
         } else {
-            this.studentrepository.create(student);
             console.log("Estudiante registrado")
         }
     }
 
-    private deletestudent() {
+    private erasestudent() {
         const id = prompt("ID: ");
-        const status = this.studentrepository.delete(id);
-
-        if (status) {
-            console.log("Estudiante eliminado");
-        } else {
-            console.log("No existe un estudiante.");
+        if (!id || id.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
         }
-
+        const status = this.studentusecase.erase(id);
+        if (!status) {
+            console.log("El estudiante no se encuentra con este id")
+        } else {
+            console.log("Estudiante Eliminado")
+        }
     }
 
-    private updatestudent() {
+    private actualizestudent() {
         const student = this.inputstudent();
-        const existing = this.studentrepository.findbyid(student.id);
-
-        if (existing.length === 0) {
-            console.log("Este estudiante no exite con este id")
+        const existing = this.studentusecase.actualize(student);
+        if (!existing) {
+            console.log("El estudiante no fue actualizado")
         } else {
-            this.studentrepository.update(student)
-            console.log("Estudiante actualizado");
+            console.log("Estudiante actualizado")
         }
     }
 
-    private findbyidstudent() {
+    private showstudent() {
+        let students: Student[] = this.studentusecase.show()
+        let studentsview = students.map(student => ({
+            id: student.id,
+            nombre: student.name,
+            identificacion: student.identification,
+            grado: student.schoolgrade
+        }));
+
+        console.table(studentsview);
+    }
+
+    private searchstudent() {
         const id = prompt("ID: ");
-        const students = this.studentrepository.findbyid(id);
-
-        if (students.length === 0) {
-
-            console.log("No encontrado");
-            return;
+        if (!id || id.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
         }
-
-        console.table(students);
+        let students = this.studentusecase.show();
+        let student = students.filter((item: any) => item.id === id);
+        if (student.length === 0) {
+            console.log("No es posible encontrarlo")
+        } else {
+            console.table(student)
+        }
     }
-
-    private readstudent() {
-        console.table(this.studentrepository.read());
-
-    }
-
 }

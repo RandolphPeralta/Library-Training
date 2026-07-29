@@ -3,11 +3,11 @@ export interface ISave<T> {
   delete(id: any): any;
 }
 
-export interface IAction<T> extends ISave<T>{
+export interface IUpdate<T> extends ISave<T>{
   update(some: any): any;
   read(): T[];
 }
 
-export interface IAdditionalAction<T> extends IAction<T> {
+export interface IRepository<T> extends IUpdate<T> {
   findbyid(id: string): Array<T>;
 }
