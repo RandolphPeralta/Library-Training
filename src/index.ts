@@ -1,10 +1,10 @@
 import { Book } from "./app/domain/types/Book";
 import { Student } from "./app/domain/types/Student";
 import { Loan } from "./app/domain/types/Loan";
-import { MemoryRAM } from "./app/infrastructure/persistence/Memory";
-import { Loanusecase } from "./app/usescases/loanusecase";
-import { StudentUseCase } from "./app/usescases/studentusecase";
-import { BookUseCase } from "./app/usescases/bookusecase";
+import { MemoryRAM } from "./app/infrastructure/persistences/Memory";
+import { Loanusecase } from "./app/infrastructure/usescases/loanusecase";
+import { StudentUseCase } from "./app/infrastructure/usescases/studentusecase";
+import { BookUseCase } from "./app/infrastructure/usescases/bookusecase";
 import { Studentconsole } from "./app/ui/terminal/consoles/studentconsol";
 import { Bookconsole } from "./app/ui/terminal/consoles/bookconsol";
 import { LoanConsole } from "./app/ui/terminal/consoles/loanconsol";
