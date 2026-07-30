@@ -8,6 +8,6 @@ export interface IUpdate<T> extends ISave<T>{
   read(): T[];
 }
 
-export interface IRepository<T> extends IUpdate<T> {
+export interface IAddidionalaction<T> extends IUpdate<T> {
   findbyid(id: string): Array<T>;
 }
