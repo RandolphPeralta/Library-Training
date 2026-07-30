@@ -21,11 +21,11 @@ export class LoanConsole implements IView {
             switch (option) {
 
                 case 1:
-                    this.lendbook();
+                    this.createloan();
                     break;
 
                 case 2:
-                    this.returnbook();
+                    this.eraseloan();
                     break;
 
                 case 3:
@@ -53,7 +53,7 @@ export class LoanConsole implements IView {
         }
     }
 
-    private lendbook() {
+    private createloan() {
         let idbook = prompt("ID Libro: ");
         if (!idbook || idbook.trim() === "") {
             throw new Error("El ID no puede estar vacío");
@@ -70,7 +70,7 @@ export class LoanConsole implements IView {
         }
     }
 
-    private returnbook() {
+    private eraseloan() {
         const idBook = prompt("ID Libro: ");
         let status = this.usecaseloan.returnBook(idBook);
         if (!status) {
