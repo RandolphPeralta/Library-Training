@@ -1,6 +1,6 @@
-import { IRepository } from "../../domain/interfaces/IRepository";
+import { IAddidionalaction } from "../../domain/interfaces/IAction";
 
-export class MemoryRAM<T> implements IRepository<T> {
+export class MemoryRAM<T> implements IAddidionalaction<T> {
 
   private memory: T[] = [];
 
