@@ -1,8 +1,7 @@
-import { IStudentUseCase } from "../domain/interfaces/IUsescases";
-import { IAddidionalaction } from "../domain/interfaces/IAction";
-import { Student } from "../domain/types/Student";
-import { Loan } from "../domain/types/Loan";
-
+import { IStudentUseCase } from "../../domain/interfaces/IUsescases";
+import { IAddidionalaction } from "../../domain/interfaces/IAction";
+import { Student } from "../../domain/types/Student";
+import { Loan } from "../../domain/types/Loan";
 export class StudentUseCase implements IStudentUseCase {
     constructor(
         private studentrepository: IAddidionalaction<Student>,

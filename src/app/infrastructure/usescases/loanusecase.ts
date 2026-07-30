@@ -1,8 +1,8 @@
-import { IUsecaseloan } from "../domain/interfaces/IUsescases";
-import { IAddidionalaction } from "../domain/interfaces/IAction";
-import { Book } from "../domain/types/Book";
-import { Student } from "../domain/types/Student";
-import { Loan } from "../domain/types/Loan";
+import { IUsecaseloan } from "../../domain/interfaces/IUsescases";
+import { IAddidionalaction } from "../../domain/interfaces/IAction";
+import { Book } from "../../domain/types/Book";
+import { Student } from "../../domain/types/Student";
+import { Loan } from "../../domain/types/Loan";
 
 export class Loanusecase implements IUsecaseloan {
     constructor(
