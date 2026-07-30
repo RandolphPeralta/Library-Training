@@ -1,5 +1,4 @@
 import { IView } from "../../../domain/interfaces/IView";
-import { IRepository } from "../../../domain/interfaces/IRepository";
 import { Student } from "../../../domain/types/Student";
 import { Book } from "../../../domain/types/Book";
 import { Loan } from "../../../domain/types/Loan";

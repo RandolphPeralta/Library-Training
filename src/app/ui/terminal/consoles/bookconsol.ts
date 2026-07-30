@@ -1,5 +1,4 @@
 import { IView } from "../../../domain/interfaces/IView";
-import { IRepository } from "../../../domain/interfaces/IRepository";
 import { Book } from "../../../domain/types/Book";
 import { prompt } from "../../../../utils/prompt";
 import { IBookUseCase } from "../../../domain/interfaces/IUsescases";
