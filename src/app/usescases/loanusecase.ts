@@ -1,14 +1,14 @@
 import { IUsecaseloan } from "../domain/interfaces/IUsescases";
-import { IRepository } from "../domain/interfaces/IRepository";
+import { IAddidionalaction } from "../domain/interfaces/IAction";
 import { Book } from "../domain/types/Book";
 import { Student } from "../domain/types/Student";
 import { Loan } from "../domain/types/Loan";
 
 export class Loanusecase implements IUsecaseloan {
     constructor(
-        private loanrepository: IRepository<Loan>,
-        private bookrepository: IRepository<Book>,
-        private studentrepository: IRepository<Student>) { }
+        private loanrepository: IAddidionalaction<Loan>,
+        private bookrepository: IAddidionalaction<Book>,
+        private studentrepository: IAddidionalaction<Student>) { }
 
     lendBook(bookId: string, studentId: string) {
         const idbook = bookId
