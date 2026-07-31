@@ -49,61 +49,25 @@ export class Bookconsole implements IView {
         }
     }
 
-    private inputbook(): Book {
-
-        const id = prompt("ID: ");
-        if (!id || id.trim() === "") {
-            throw new Error("El ID no puede estar vacío");
-        }
-        const title = prompt("Titulo: ");
-        if (!title || title.trim() === "") {
-            throw new Error("El titulo no puede estar vacío");
-        }
-        const author = prompt("Autor: ");
-        if (!author || author.trim() === "") {
-            throw new Error("El autor no puede estar vacío");
-        }
-        const available = true;
-
-        return {
-            id,
-            title,
-            author,
-            available
-        };
-    }
-
     private registerbook() {
         const student = this.inputbook();
         const result: boolean = this.bookusecase.register(student);
-        if (!result) {
-            console.log("El libro ya existe con este id")
-        } else {
-            console.log("Libro registrado")
-        }
+        console.log(result ? "Libro registrado" : "No se pudo registrar");
     }
 
     private erasebook() {
         const id = prompt("ID: ");
-        if (!id || id.trim() === "") {
+        if (id.trim() === "") {
             throw new Error("El ID no puede estar vacío");
         }
         const status: boolean = this.bookusecase.erase(id);
-        if (!status) {
-            console.log("El libro no se encuentra con este id")
-        } else {
-            console.log("Libro eliminado")
-        }
+        console.log(status ? "Libro eliminado" : "No se pudo eliminar");
     }
 
     private actualizebook() {
         const student = this.inputbook();
-        const existing: boolean = this.bookusecase.actualize(student);
-        if (!existing) {
-            console.log("El Libro no fue encontrado y no fue actualizado")
-        } else {
-            console.log("Libro actualizado")
-        }
+        const newbook: boolean = this.bookusecase.actualize(student);
+        console.log(newbook ? "Libro actualizado" : "No se pudo actualizar");
     }
 
     private showbook() {
@@ -133,4 +97,29 @@ export class Bookconsole implements IView {
             console.table(student)
         }
     }
+
+    private inputbook(): Book {
+
+        const id = prompt("ID: ");
+        if (!id || id.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
+        }
+        const title = prompt("Titulo: ");
+        if (!title || title.trim() === "") {
+            throw new Error("El titulo no puede estar vacío");
+        }
+        const author = prompt("Autor: ");
+        if (!author || author.trim() === "") {
+            throw new Error("El autor no puede estar vacío");
+        }
+        const available = true;
+
+        return {
+            id,
+            title,
+            author,
+            available
+        };
+    }
+
 }

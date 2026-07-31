@@ -49,39 +49,10 @@ export class Studentconsole implements IView {
         }
     }
 
-    private inputstudent(): Student {
-
-        const id = prompt("ID: ");
-        if (!id || id.trim() === "") {
-            console.log("El ID no puede estar vacío");
-        }
-
-        const name = prompt("Nombre: ");
-        if (!/^[a-zA-Z\s]+$/.test(name)) {
-            console.log("El nombre solo puede contener letras");
-        }
-
-        const identification = prompt("Identificación: ");
-        if (!/^\d+$/.test(identification)) {
-            console.log("La identificación debe ser numérica");
-        }
-
-        const schoolgrade = prompt("Grado Escolar: ");
-        if (!schoolgrade || schoolgrade.trim() === "") {
-            console.log("El grado escolar no puede estar vacío");
-        }
-
-        return { id, name, identification, schoolgrade };
-    }
-
     private registerStudent() {
         const student = this.inputstudent();
         const result: boolean = this.studentusecase.register(student);
-        if (!result) {
-            console.log("El estudiante no se puede registrar")
-        } else {
-            console.log("Estudiante registrado")
-        }
+        console.log(result ? "Estudiante registrado" : "No se pudo registrar");
     }
 
     private erasestudent() {
@@ -90,21 +61,13 @@ export class Studentconsole implements IView {
             throw new Error("El ID no puede estar vacío");
         }
         const status: boolean = this.studentusecase.erase(id);
-        if (!status) {
-            console.log("El estudiante no se encuentra con este id")
-        } else {
-            console.log("Estudiante Eliminado")
-        }
+        console.log(status ? "Estudiante eliminado" : "No se pudo eliminar");
     }
 
     private actualizestudent() {
         const student = this.inputstudent();
-        const existing: boolean = this.studentusecase.actualize(student);
-        if (!existing) {
-            console.log("El estudiante no fue actualizado")
-        } else {
-            console.log("Estudiante actualizado")
-        }
+        const newstudent: boolean = this.studentusecase.actualize(student);
+        console.log(newstudent ? "Estudiante actualizado" : "No se pudo actualizar");
     }
 
     private showstudent() {
@@ -131,5 +94,30 @@ export class Studentconsole implements IView {
         } else {
             console.table(student)
         }
+    }
+
+    private inputstudent(): Student {
+
+        const id = prompt("ID: ");
+        if (id.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
+        }
+
+        const name = prompt("Nombre: ");
+        if (!/^[a-zA-Z\s]+$/.test(name)) {
+            throw new Error("El nombre solo puede contener letras");
+        }
+
+        const identification = prompt("Identificación: ");
+        if (!/^\d+$/.test(identification)) {
+            throw new Error("La identificación debe ser numérica");
+        }
+
+        const schoolgrade = prompt("Grado Escolar: ");
+        if (schoolgrade.trim() === "") {
+            throw new Error("El grado escolar no puede estar vacío");
+        }
+
+        return { id, name, identification, schoolgrade };
     }
 }

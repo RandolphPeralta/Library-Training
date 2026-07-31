@@ -54,30 +54,15 @@ export class LoanConsole implements IView {
     }
 
     private createloan() {
-        let idbook = prompt("ID Libro: ");
-        if (!idbook || idbook.trim() === "") {
-            throw new Error("El ID no puede estar vacío");
-        }
-        let idstudent = prompt("ID Estudiante: ");
-        if (!idstudent || idstudent.trim() === "") {
-            throw new Error("El ID no puede estar vacío");
-        }
-        let status = this.usecaseloan.lendBook(idbook, idstudent);
-        if (!status) {
-            console.log("No se puede hacer el prestamo")
-        } else {
-            console.log("Prestamo exitoso")
-        }
+        let loan = this.inputloan();
+        let status = this.usecaseloan.lendBook(loan.idbook, loan.idstudent);
+        console.log(status ? "Prestamo exitoso" : "No se pudo realizar el prestamo");
     }
 
     private eraseloan() {
         const idBook = prompt("ID Libro: ");
         let status = this.usecaseloan.returnBook(idBook);
-        if (!status) {
-            console.log("No se pudo devoler")
-        } else {
-            console.log("Libro devuelto")
-        }
+        console.log(status ? "Libro devuelto" : "No se pudo devolver el libro");
     }
 
     private readloan() {
@@ -100,5 +85,17 @@ export class LoanConsole implements IView {
         })
     }
 
+    private inputloan(){
+        let idbook = prompt("ID Libro: ");
+        if (!idbook || idbook.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
+        }
+        let idstudent = prompt("ID Estudiante: ");
+        if (!idstudent || idstudent.trim() === "") {
+            throw new Error("El ID no puede estar vacío");
+        }
+
+        return {idbook, idstudent}
+    }
 
 }
