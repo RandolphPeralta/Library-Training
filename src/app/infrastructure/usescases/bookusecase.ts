@@ -1,6 +1,7 @@
 import { IBookUseCase } from "../../domain/interfaces/IUsescases";
 import { IAddidionalaction } from "../../domain/interfaces/IAction";
 import { Book } from "../../domain/types/Book";
+
 export class BookUseCase implements IBookUseCase {
     constructor(
         private bookrepository: IAddidionalaction<Book>,

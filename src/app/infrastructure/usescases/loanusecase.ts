@@ -51,6 +51,7 @@ export class Loanusecase implements IUsecaseloan {
 
         return true
     }
+    
     returnBook(bookId: string) {
         const loan = this.loanrepository.read().find(loan => loan.book.id === bookId);
 
