@@ -1,10 +1,10 @@
 import { IView } from "../../../domain/interfaces/IView";
 import { Student } from "../../../domain/types/Student";
 import { prompt } from "../../../../utils/prompt";
-import { IStudentUseCase } from "../../../domain/interfaces/IUsescases";
+import { IStudentservice } from "../../../domain/interfaces/IServices";
 
 export class Studentconsole implements IView {
-    constructor(private studentusecase: IStudentUseCase) { }
+    constructor(private studentusecase: IStudentservice) { }
 
     execute() {
         let run = true;

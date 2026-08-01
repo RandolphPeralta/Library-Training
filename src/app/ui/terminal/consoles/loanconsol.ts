@@ -3,11 +3,11 @@ import { Student } from "../../../domain/types/Student";
 import { Book } from "../../../domain/types/Book";
 import { Loan } from "../../../domain/types/Loan";
 import { prompt } from "../../../../utils/prompt";
-import { IUsecaseloan } from "../../../domain/interfaces/IUsescases";
+import { Iloanservice } from "../../../domain/interfaces/IServices";
 
 export class LoanConsole implements IView {
 
-    constructor(private usecaseloan: IUsecaseloan) { }
+    constructor(private usecaseloan: Iloanservice) { }
 
     execute() {
         let run = true;

@@ -1,10 +1,10 @@
 import { IView } from "../../../domain/interfaces/IView";
 import { Book } from "../../../domain/types/Book";
 import { prompt } from "../../../../utils/prompt";
-import { IBookUseCase } from "../../../domain/interfaces/IUsescases";
+import { IBookservice } from "../../../domain/interfaces/IServices";
 
 export class Bookconsole implements IView {
-    constructor(private bookusecase: IBookUseCase) { }
+    constructor(private bookusecase: IBookservice) { }
 
     execute() {
         let run = true;
