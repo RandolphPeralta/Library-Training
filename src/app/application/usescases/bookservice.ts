@@ -1,8 +1,8 @@
-import { IBookUseCase } from "../../domain/interfaces/IUsescases";
+import { IBookservice } from "../../domain/interfaces/IServices";
 import { IAddidionalaction } from "../../domain/interfaces/IAction";
 import { Book } from "../../domain/types/Book";
 
-export class BookUseCase implements IBookUseCase {
+export class Bookservice implements IBookservice {
     constructor(
         private bookrepository: IAddidionalaction<Book>,
     ) { }

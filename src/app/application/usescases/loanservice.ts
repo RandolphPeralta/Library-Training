@@ -1,10 +1,10 @@
-import { IUsecaseloan } from "../../domain/interfaces/IUsescases";
+import { Iloanservice } from "../../domain/interfaces/IServices";
 import { IAddidionalaction } from "../../domain/interfaces/IAction";
 import { Book } from "../../domain/types/Book";
 import { Student } from "../../domain/types/Student";
 import { Loan } from "../../domain/types/Loan";
 
-export class Loanusecase implements IUsecaseloan {
+export class Loanservice implements Iloanservice {
     constructor(
         private loanrepository: IAddidionalaction<Loan>,
         private bookrepository: IAddidionalaction<Book>,

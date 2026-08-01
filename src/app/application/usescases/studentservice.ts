@@ -1,9 +1,9 @@
-import { IStudentUseCase } from "../../domain/interfaces/IUsescases";
+import { IStudentservice } from "../../domain/interfaces/IServices";
 import { IAddidionalaction } from "../../domain/interfaces/IAction";
 import { Student } from "../../domain/types/Student";
 import { Loan } from "../../domain/types/Loan";
 
-export class StudentUseCase implements IStudentUseCase {
+export class Studentservice implements IStudentservice {
     constructor(
         private studentrepository: IAddidionalaction<Student>,
         private loanrepository: IAddidionalaction<Loan>
