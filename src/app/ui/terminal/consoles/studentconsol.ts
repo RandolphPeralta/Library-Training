@@ -4,7 +4,7 @@ import { prompt } from "../../../../utils/prompt";
 import { IStudentservice } from "../../../domain/interfaces/IServices";
 
 export class Studentconsole implements IView {
-    constructor(private studentusecase: IStudentservice) { }
+    constructor(private studentservice: IStudentservice) { }
 
     execute() {
         let run = true;
@@ -51,7 +51,7 @@ export class Studentconsole implements IView {
 
     private registerStudent() {
         const student = this.inputstudent();
-        const result: boolean = this.studentusecase.register(student);
+        const result: boolean = this.studentservice.register(student);
         console.log(result ? "Estudiante registrado" : "No se pudo registrar");
     }
 
@@ -60,18 +60,18 @@ export class Studentconsole implements IView {
         if (!id || id.trim() === "") {
             throw new Error("El ID no puede estar vacío");
         }
-        const status: boolean = this.studentusecase.erase(id);
+        const status: boolean = this.studentservice.erase(id);
         console.log(status ? "Estudiante eliminado" : "No se pudo eliminar");
     }
 
     private actualizestudent() {
         const student = this.inputstudent();
-        const newstudent: boolean = this.studentusecase.actualize(student);
+        const newstudent: boolean = this.studentservice.actualize(student);
         console.log(newstudent ? "Estudiante actualizado" : "No se pudo actualizar");
     }
 
     private showstudent() {
-        let students: Student[] = this.studentusecase.show()
+        let students: Student[] = this.studentservice.show()
         let studentsview = students.map(student => ({
             id: student.id,
             nombre: student.name,
@@ -87,7 +87,7 @@ export class Studentconsole implements IView {
         if (!id || id.trim() === "") {
             throw new Error("El ID no puede estar vacío");
         }
-        let students = this.studentusecase.show();
+        let students = this.studentservice.show();
         let student = students.filter((item: any) => item.id === id);
         if (student.length === 0) {
             console.log("No es posible encontrarlo")

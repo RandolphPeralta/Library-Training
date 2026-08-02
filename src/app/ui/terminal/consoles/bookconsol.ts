@@ -4,7 +4,7 @@ import { prompt } from "../../../../utils/prompt";
 import { IBookservice } from "../../../domain/interfaces/IServices";
 
 export class Bookconsole implements IView {
-    constructor(private bookusecase: IBookservice) { }
+    constructor(private bookservice: IBookservice) { }
 
     execute() {
         let run = true;
@@ -51,7 +51,7 @@ export class Bookconsole implements IView {
 
     private registerbook() {
         const student = this.inputbook();
-        const result: boolean = this.bookusecase.register(student);
+        const result: boolean = this.bookservice.register(student);
         console.log(result ? "Libro registrado" : "No se pudo registrar");
     }
 
@@ -60,19 +60,19 @@ export class Bookconsole implements IView {
         if (id.trim() === "") {
             throw new Error("El ID no puede estar vacío");
         }
-        const status: boolean = this.bookusecase.erase(id);
+        const status: boolean = this.bookservice.erase(id);
         console.log(status ? "Libro eliminado" : "No se pudo eliminar");
     }
 
     private actualizebook() {
         const student = this.inputbook();
-        const newbook: boolean = this.bookusecase.actualize(student);
+        const newbook: boolean = this.bookservice.actualize(student);
         console.log(newbook ? "Libro actualizado" : "No se pudo actualizar");
     }
 
     private showbook() {
 
-        let books: Book[] = this.bookusecase.show()
+        let books: Book[] = this.bookservice.show()
 
         let booksview = books.map(book => ({
             id: book.id,
@@ -89,7 +89,7 @@ export class Bookconsole implements IView {
         if (!id || id.trim() === "") {
             throw new Error("El ID no puede estar vacío");
         }
-        let students = this.bookusecase.show();
+        let students = this.bookservice.show();
         let student = students.filter((item: any) => item.id === id);
         if (student.length === 0) {
             console.log("No es posible encontrarlo")

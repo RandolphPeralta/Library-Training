@@ -7,7 +7,7 @@ import { Iloanservice } from "../../../domain/interfaces/IServices";
 
 export class LoanConsole implements IView {
 
-    constructor(private usecaseloan: Iloanservice) { }
+    constructor(private loanservice: Iloanservice) { }
 
     execute() {
         let run = true;
@@ -55,18 +55,18 @@ export class LoanConsole implements IView {
 
     private createloan() {
         let loan = this.inputloan();
-        let status = this.usecaseloan.lendBook(loan.idbook, loan.idstudent);
+        let status = this.loanservice.lendBook(loan.idbook, loan.idstudent);
         console.log(status ? "Prestamo exitoso" : "No se pudo realizar el prestamo");
     }
 
     private eraseloan() {
         const idBook = prompt("ID Libro: ");
-        let status = this.usecaseloan.returnBook(idBook);
+        let status = this.loanservice.returnBook(idBook);
         console.log(status ? "Libro devuelto" : "No se pudo devolver el libro");
     }
 
     private readloan() {
-        let loans: Loan[] = this.usecaseloan.show()
+        let loans: Loan[] = this.loanservice.show()
         console.log("\n===== PRÉSTAMOS =====")
 
         if (loans.length === 0) {
