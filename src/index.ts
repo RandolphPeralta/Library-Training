@@ -17,11 +17,11 @@ const loanservice = new Service<Loan>(repositoryloan);
 const studentservice = new Service<Student>(repositorystudent);
 const bookservice = new Service<Book>(repositorybook);
 
-const studentconsoletest = new Studentconsole(studentservice, loanservice);
-const bookconsoletest = new Bookconsole(bookservice);
+const studentconsole = new Studentconsole(studentservice, loanservice);
+const bookconsole = new Bookconsole(bookservice);
 const loanconsole = new LoanConsole(studentservice, bookservice,loanservice);
 
-const menu = new MenuConsole(studentconsoletest, bookconsoletest, loanconsole);
+const menu = new MenuConsole(studentconsole, bookconsole, loanconsole);
 
 const app = new App(menu);
 app.run();
