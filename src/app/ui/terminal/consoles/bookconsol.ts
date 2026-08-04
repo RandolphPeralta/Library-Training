@@ -1,29 +1,29 @@
 import { IView } from "../../../domain/interfaces/IView";
 import { Book } from "../../../domain/types/Book";
 import { prompt } from "../../../../utils/prompt";
-import { IBookservice } from "../../../domain/interfaces/IServices";
+import { IService } from "../../../domain/interfaces/IServices";
 
 export class Bookconsole implements IView {
-    constructor(private bookservice: IBookservice) { }
+    constructor(private bookservice: IService<Book>) { }
 
     execute() {
         let run = true;
         while (run) {
-            this.showMenu();
+            this.readMenu();
             const option = Number(prompt("Seleccione: "));
 
             switch (option) {
                 case 1:
-                    this.registerbook();
+                    this.createbook();
                     break;
                 case 2:
-                    this.erasebook();
+                    this.deletebook();
                     break;
                 case 3:
-                    this.actualizebook();
+                    this.updatebook();
                     break;
                 case 4:
-                    this.showbook();
+                    this.readbook();
                     break
                 case 5:
                     this.searchbook();
@@ -35,7 +35,7 @@ export class Bookconsole implements IView {
         }
     }
 
-    private showMenu(): void {
+    private readMenu(): void {
         const opciones: string[] = [
             "1. Registrar libro",
             "2. Borrar libro",
@@ -49,30 +49,66 @@ export class Bookconsole implements IView {
         }
     }
 
-    private registerbook() {
-        const student = this.inputbook();
-        const result: boolean = this.bookservice.register(student);
+    private inputbook(): Book {
+
+        const id = prompt("ID: ");
+        if (!id || id.trim() === "") {
+            console.log("El ID no puede estar vacío");
+        }
+
+        const title = prompt("Titulo: ");
+        if (!title || title.trim() === "") {
+            console.log("El titulo no puede estar vacío");
+        }
+
+        const author = prompt("Autor: ");
+        if (!author || author.trim() === "") {
+            console.log("El autor no puede estar vacío");
+        }
+        const available = true;
+
+        return {
+            id,
+            title,
+            author,
+            available
+        };
+    }
+
+    private createbook() {
+        const book = this.inputbook();
+        if (!book.id || !book.title || !book.author)
+            {return}
+        const result: boolean = this.bookservice.create(book);
         console.log(result ? "Libro registrado" : "No se pudo registrar");
     }
 
-    private erasebook() {
+    private deletebook() {
         const id = prompt("ID: ");
-        if (id.trim() === "") {
-            throw new Error("El ID no puede estar vacío");
+        if (!id || id.trim() === "") {
+            console.log("El ID no puede estar vacío");
+            return id;
         }
-        const status: boolean = this.bookservice.erase(id);
+
+        let books: Book[] = this.bookservice.read();
+        let book = books.filter(findbook => findbook.id = id)[0]
+        if (!book.available) {
+            return;
+        }
+
+        const status: boolean = this.bookservice.delete(id);
         console.log(status ? "Libro eliminado" : "No se pudo eliminar");
     }
 
-    private actualizebook() {
+    private updatebook() {
         const student = this.inputbook();
-        const newbook: boolean = this.bookservice.actualize(student);
+        const newbook: boolean = this.bookservice.update(student);
         console.log(newbook ? "Libro actualizado" : "No se pudo actualizar");
     }
 
-    private showbook() {
+    private readbook() {
 
-        let books: Book[] = this.bookservice.show()
+        let books: Book[] = this.bookservice.read();
 
         let booksview = books.map(book => ({
             id: book.id,
@@ -89,7 +125,7 @@ export class Bookconsole implements IView {
         if (!id || id.trim() === "") {
             throw new Error("El ID no puede estar vacío");
         }
-        let students = this.bookservice.show();
+        let students = this.bookservice.read();
         let student = students.filter((item: any) => item.id === id);
         if (student.length === 0) {
             console.log("No es posible encontrarlo")
@@ -97,29 +133,4 @@ export class Bookconsole implements IView {
             console.table(student)
         }
     }
-
-    private inputbook(): Book {
-
-        const id = prompt("ID: ");
-        if (!id || id.trim() === "") {
-            throw new Error("El ID no puede estar vacío");
-        }
-        const title = prompt("Titulo: ");
-        if (!title || title.trim() === "") {
-            throw new Error("El titulo no puede estar vacío");
-        }
-        const author = prompt("Autor: ");
-        if (!author || author.trim() === "") {
-            throw new Error("El autor no puede estar vacío");
-        }
-        const available = true;
-
-        return {
-            id,
-            title,
-            author,
-            available
-        };
-    }
-
 }
