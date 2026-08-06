@@ -7,7 +7,7 @@ import { IService } from "../../../domain/interfaces/IServices";
 
 export class LoanConsole implements IView {
 
-    constructor(private studentservice: IService<Student>, private bookservice: IService<Book> , private loanservice: IService<Loan>) { }
+    constructor(private studentservice: IService<Student>, private bookservice: IService<Book>, private loanservice: IService<Loan>) { }
 
     execute() {
         let run = true;
@@ -55,27 +55,13 @@ export class LoanConsole implements IView {
 
     private lendbook() {
 
-        let idbook = prompt("ID Libro: ");
-        if (!idbook || idbook.trim() === "") {
-            console.log("El ID no puede estar vacío");
-            return
-        }
-
-        let idstudent = prompt("ID Estudiante: ");
-        if (!idstudent || idstudent.trim() === "") {
-            console.log("El ID no puede estar vacío");
-            return
-        }
+        let idbook = this.inputidbook();
+        let idstudent = this.inputidstudent();
 
         let books: Book[] = this.bookservice.read();
         const book = books.filter((book: any) => book.id === idbook)[0];
-
-        if (!book) {
-            return;
-        }
-
-        if (!book.available) {
-            return;
+        if (!book || !book.available) {
+            return false;
         }
 
         let students: Student[] = this.studentservice.read();
@@ -85,28 +71,22 @@ export class LoanConsole implements IView {
             return false;
         }
 
-        let loanDate = new Date();
-
         const loan: Loan = {
             id: Math.random().toString(),
             book,
             student,
-            loanDate
+            loanDate: new Date()
         };
 
         let status = this.loanservice.create(loan);
         book.available = false;
         this.bookservice.update(book);
 
-        console.log(status? "Prestamo existoso" : "No se pudo realizar el prestamo");
+        console.log(status ? "Prestamo existoso" : "No se pudo realizar el prestamo");
     }
 
     private returnbook() {
-        let idbook = prompt("ID Libro: ");
-        if (!idbook || idbook.trim() === "") {
-            console.log("El ID no puede estar vacío");
-            return idbook
-        }
+        let idbook = this.inputidbook();
         let loans: Loan[] = this.loanservice.read()
         const loan = loans.find(loan => loan.book.id === idbook);
         if (!loan) {
@@ -118,7 +98,7 @@ export class LoanConsole implements IView {
         const status = this.loanservice.update(loan);
         loan.book.available = true;
         this.bookservice.update(loan.book);
-        console.log(status? "Libro devuelto" : "No se pudo devolver")
+        console.log(status ? "Libro devuelto" : "No se pudo devolver")
     }
 
     private readloan() {
@@ -139,5 +119,23 @@ export class LoanConsole implements IView {
                 fechaDevolucion: loan.returndate || "Pendiente"
             })
         })
+    }
+
+    private inputidbook(){
+        let idbook = prompt("ID Libro: ");
+        if (!idbook || idbook.trim() === "") {
+            console.log("El ID no puede estar vacío");
+        }
+
+        return idbook
+    }
+
+    private inputidstudent(){
+        let idstudent = prompt("ID Estudiante: ");
+        if (!idstudent || idstudent.trim() === "") {
+            console.log("El ID no puede estar vacío");
+        }
+
+        return idstudent
     }
 }
