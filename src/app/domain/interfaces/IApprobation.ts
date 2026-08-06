@@ -1,3 +1,3 @@
 export interface IApprobation<T> {
-    approve(item: T): any;
+    approve(item: any): any;
 }
