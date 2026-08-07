@@ -58,6 +58,7 @@ export class Studentconsole implements IView {
         let studentactiveloan = activeLoans.filter(loanstudent => loanstudent.student.id === id && !loanstudent.returndate);
 
         if (studentactiveloan.length > 0) {
+            console.log("El estudiante no puede ser eliminado, ya que tiene prestamos")
             return;
         }
 
