@@ -26,9 +26,6 @@ export class Studentconsole implements IView {
                 case 4:
                     this.readstudent();
                     break
-                case 5:
-                    this.searchstudent();
-                    break
                 case 0:
                     run = false;
                     break;
@@ -42,7 +39,6 @@ export class Studentconsole implements IView {
             "2. Borrar estudiante",
             "3. Actualizar estudiante",
             "4. Mostrar estudiantes",
-            "5. Buscar estudiate",
             "0. Salir"
         ];
         for (const opcion of opciones) {
@@ -85,17 +81,6 @@ export class Studentconsole implements IView {
         }));
 
         console.table(studentsview);
-    }
-
-    private searchstudent() {
-        const id = this.inputid();
-        let students = this.studentservice.read();
-        let student = students.filter((item: any) => item.id === id);
-        if (student.length === 0) {
-            console.log("No es posible encontrarlo")
-        } else {
-            console.table(student)
-        }
     }
 
     private inputstudent(): Student {

@@ -46,8 +46,8 @@ export class MenuConsole implements IView {
         console.log("Bienvenido al Sistema de Biblioteca ¿qué desea?");
         console.log("=============================================");
         const opciones: string[] = [
-            "1. Registrar, Eliminar, Ver, Actualizar,  Buscar estudiante",
-            "2. Registrar, Eliminar, Ver, Actualizar,  Buscar libro",
+            "1. Registrar, Eliminar, Ver, Actualizar estudiante",
+            "2. Registrar, Eliminar, Ver, Actualizar libro",
             "3. Prestar libro, Devolver libro,  Mostrar prestamos",
             "0. Salir"
         ];

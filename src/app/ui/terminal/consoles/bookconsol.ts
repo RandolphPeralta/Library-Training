@@ -25,9 +25,6 @@ export class Bookconsole implements IView {
                 case 4:
                     this.readbook();
                     break
-                case 5:
-                    this.searchbook();
-                    break
                 case 0:
                     run = false;
                     break;
@@ -41,7 +38,6 @@ export class Bookconsole implements IView {
             "2. Borrar libro",
             "3. Actualizar libro",
             "4. Mostrar libros",
-            "5. Buscar libro",
             "0. Salir"
         ];
         for (const opcion of opciones) {
@@ -84,17 +80,6 @@ export class Bookconsole implements IView {
         }));
 
         console.table(booksview);
-    }
-
-    private searchbook() {
-        const id = this.inputid()
-        let students = this.bookservice.read();
-        let student = students.filter((item: any) => item.id === id);
-        if (student.length === 0) {
-            console.log("No es posible encontrarlo")
-        } else {
-            console.table(student)
-        }
     }
 
     private inputbook(): Book {
