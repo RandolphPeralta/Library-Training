@@ -56,6 +56,7 @@ export class Bookconsole implements IView {
         let books: Book[] = this.bookservice.read();
         let book = books.filter(findbook => findbook.id = id)[0];
         if (!book.available) {
+            console.log("El libro esta prestado y no posible eliminar");
             return;
         }
 
@@ -84,20 +85,21 @@ export class Bookconsole implements IView {
 
     private inputbook(): Book {
 
-        const id = prompt("ID: ");
+        let id = prompt("ID: ");
         if (!id || id.trim() === "") {
             console.log("El ID no puede estar vacío");
         }
 
-        const title = prompt("Titulo: ");
+        let title = prompt("Titulo: ");
         if (!title || title.trim() === "") {
             console.log("El titulo no puede estar vacio");
         }
 
-        const author = prompt("Autor: ");
+        let author = prompt("Autor: ");
         if (!author || author.trim() === "") {
             console.log("El autor no puede estar vacío");
         }
+        
         const available = true;
 
         return {
@@ -109,7 +111,7 @@ export class Bookconsole implements IView {
     }
 
     private inputid() {
-        const id = prompt("ID: ");
+        let id = prompt("ID: ");
         if (!id || id.trim() === "") {
             console.log("El ID no puede estar vacío");
         }

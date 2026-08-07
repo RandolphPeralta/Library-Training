@@ -59,16 +59,18 @@ export class LoanConsole implements IView {
         let idstudent = this.inputidstudent();
 
         let books: Book[] = this.bookservice.read();
-        const book = books.filter((book: any) => book.id === idbook)[0];
+        const book = books.filter((book: Book) => book.id === idbook)[0];
         if (!book || !book.available) {
-            return false;
+            console.log("El libro no existe o no esta disponible")
+            return;
         }
 
         let students: Student[] = this.studentservice.read();
         const student = students.filter((student: Student) => student.id === idstudent)[0];
 
         if (!student) {
-            return false;
+            console.log("El estudiante no existe")
+            return;
         }
 
         const loan: Loan = {
