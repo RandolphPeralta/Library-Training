@@ -1,10 +1,10 @@
 export interface ISave<T> {
-  create(some: T): any;
-  delete(id: any): any;
+  create(some: T): boolean;
+  delete(id: string): boolean;
 }
 
 export interface IUpdate<T> extends ISave<T>{
-  update(some: any): any;
+  update(some: T): boolean;
   read(): T[];
 }
 

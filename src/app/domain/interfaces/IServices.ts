@@ -1,6 +1,6 @@
 export interface IService<T> {
-    create(item: T): any;
-    read(): any;
-    update(item: T): any;
-    delete(id: any): any;
+    create(item: T): boolean;   
+    read(): Array<T>;
+    update(item: T): boolean;
+    delete(id: string): boolean;
 }
