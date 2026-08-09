@@ -4,9 +4,9 @@ import { Loan } from "./app/domain/types/Loan";
 import { MemoryRAM } from "./app/infrastructure/persistences/Memory";
 import { Service } from "./app/application/services/Services";
 import { Validation } from "./app/application/validations/Validation";
-import { Studentconsole } from "./app/ui/terminal/consoles/studentconsol";
-import { Bookconsole } from "./app/ui/terminal/consoles/bookconsol";
-import { LoanConsole } from "./app/ui/terminal/consoles/loanconsol";
+import { Studentconsole } from "./app/ui/terminal/consoles/studentconsole";
+import { Bookconsole } from "./app/ui/terminal/consoles/bookconsole";
+import { LoanConsole } from "./app/ui/terminal/consoles/loanconsole";
 import { MenuConsole } from "./app/ui/terminal/menu/Menuconsole";
 import { App } from "./app/app";
 
