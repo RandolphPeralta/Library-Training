@@ -3,7 +3,7 @@ import { Student } from "./app/domain/types/Student";
 import { Loan } from "./app/domain/types/Loan";
 import { MemoryRAM } from "./app/infrastructure/persistences/Memory";
 import { Service } from "./app/application/services/Services";
-import { Approbation } from "./app/application/approbation/Approbation";
+import { Validation } from "./app/application/validations/Validation";
 import { Studentconsole } from "./app/ui/terminal/consoles/studentconsol";
 import { Bookconsole } from "./app/ui/terminal/consoles/bookconsol";
 import { LoanConsole } from "./app/ui/terminal/consoles/loanconsol";
@@ -14,13 +14,13 @@ const repositorybook = new MemoryRAM<Book>();
 const repositorystudent = new MemoryRAM<Student>();
 const repositoryloan = new MemoryRAM<Loan>();
 
-const studentapprobator = new Approbation<Student>();
-const bookapprobator = new Approbation<Book>();
-const loanapprobator = new Approbation<Loan>();
+const studentvalidator = new Validation<Student>();
+const bookvalidator = new Validation<Book>();
+const loanvalidator = new Validation<Loan>();
 
-const loanservice = new Service<Loan>(repositoryloan, loanapprobator);
-const studentservice = new Service<Student>(repositorystudent, studentapprobator);
-const bookservice = new Service<Book>(repositorybook, bookapprobator);
+const loanservice = new Service<Loan>(repositoryloan, loanvalidator);
+const studentservice = new Service<Student>(repositorystudent, studentvalidator);
+const bookservice = new Service<Book>(repositorybook, bookvalidator);
 
 const studentconsole = new Studentconsole(studentservice, loanservice);
 const bookconsole = new Bookconsole(bookservice);
