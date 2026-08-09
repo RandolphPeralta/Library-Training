@@ -1,12 +1,12 @@
 import { IService } from "../../domain/interfaces/IServices";
-import { IApprobation } from "../../domain/interfaces/IApprobation";
+import { IValidation } from "../../domain/interfaces/IValidation";
 import { IAddidionalaction } from "../../domain/interfaces/IAction";
 
 export class Service<T> implements IService<T> {
-    constructor(private repository: IAddidionalaction<T>, private approbator: IApprobation<T>) { }
+    constructor(private repository: IAddidionalaction<T>, private approbator: IValidation<T>) { }
 
     create(item: T) {
-        if (!this.approbator.approve(item)) return false
+        if (!this.approbator.validate(item)) return false
         return this.repository.create(item);
     }
 
@@ -15,7 +15,7 @@ export class Service<T> implements IService<T> {
     }
 
     update(item: T) {
-        if (!this.approbator.approve(item)) return false
+        if (!this.approbator.validate(item)) return false
         return this.repository.update(item);
     }
 
