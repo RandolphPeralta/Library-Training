@@ -47,6 +47,14 @@ export class Bookconsole implements IView {
 
     private createbook() {
         const book = this.inputbook();
+        let books = this.bookservice.read();
+        let findstudent = books.findIndex((item: Book) => item.id === book.id);
+
+        if (findstudent !== -1) {
+            console.log("Este libro ya fue registrado con este id")
+            return;
+        }
+
         const result: boolean = this.bookservice.create(book);
         console.log(result ? "Libro registrado" : "No se pudo registrar");
     }
@@ -85,10 +93,10 @@ export class Bookconsole implements IView {
 
     private inputbook(): Book {
 
-        let id = prompt("ID: ");
-        if (!id || id.trim() === "") {
-            console.log("El ID no puede estar vacío");
-        }
+        // let id = prompt("ID: ");
+        // if (!id || id.trim() === "") {
+        //     console.log("El ID no puede estar vacío");
+        // }
 
         let title = prompt("Titulo: ");
         if (!title || title.trim() === "") {
@@ -99,8 +107,9 @@ export class Bookconsole implements IView {
         if (!author || author.trim() === "") {
             console.log("El autor no puede estar vacío");
         }
-        
+
         const available = true;
+        const id = Math.random().toString();
 
         return {
             id,
