@@ -5,7 +5,7 @@ export interface ISave<T> {
 
 export interface IUpdate<T> extends ISave<T>{
   update(some: T): boolean;
-  read(): T[];
+  read(): Array<T>;
 }
 
 export interface IAddidionalaction<T> extends IUpdate<T> {
