@@ -61,6 +61,7 @@ export class Studentconsole implements IView {
     }
 
     private deletestudent() {
+        this.readstudent();
         const id = this.inputid();
         let activeLoans: Loan[] = this.loanservice.read();
         let studentactiveloan = activeLoans.filter(loanstudent => loanstudent.student.id === id && !loanstudent.returndate);
@@ -75,7 +76,17 @@ export class Studentconsole implements IView {
     }
 
     private updatestudent() {
+        this.readstudent();
+        const id = this.inputid();
+        let students = this.studentservice.read();
+        let findstudent = students.filter((item: Student) => item.id === id)[0];
+        if (!findstudent) {
+            console.log("Estudiante no encontrado");
+            return;
+        }
+
         const student = this.inputstudent();
+        student.id = findstudent.id
         const newstudent: boolean = this.studentservice.update(student);
         console.log(newstudent ? "Estudiante actualizado" : "No se pudo actualizar");
     }
@@ -94,11 +105,6 @@ export class Studentconsole implements IView {
 
     private inputstudent(): Student {
 
-        const id = prompt("ID: ");
-        if (!id) {
-            console.log("El ID no puede estar vacío");
-        }
-
         const name = prompt("Nombre: ");
         if (!name || !/^[a-zA-Z\s]+$/.test(name)) {
             console.log("El nombre no puede estar vacio y solo puede contener letras");
@@ -113,6 +119,8 @@ export class Studentconsole implements IView {
         if (!schoolgrade) {
             console.log("El grado escolar no puede estar vacío");
         }
+
+        const id = Math.random().toString();
 
         return { id, name, identification, schoolgrade };
     }

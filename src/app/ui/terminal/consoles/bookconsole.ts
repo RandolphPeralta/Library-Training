@@ -48,9 +48,9 @@ export class Bookconsole implements IView {
     private createbook() {
         const book = this.inputbook();
         let books = this.bookservice.read();
-        let findstudent = books.findIndex((item: Book) => item.id === book.id);
+        let indexstudent = books.findIndex((item: Book) => item.id === book.id);
 
-        if (findstudent !== -1) {
+        if (indexstudent !== -1) {
             console.log("Este libro ya fue registrado con este id")
             return;
         }
@@ -60,7 +60,8 @@ export class Bookconsole implements IView {
     }
 
     private deletebook() {
-        const id = this.inputid()
+        this.readbook();
+        const id = this.inputid();
         let books: Book[] = this.bookservice.read();
         let book = books.filter(findbook => findbook.id = id)[0];
         if (!book.available) {
@@ -73,8 +74,17 @@ export class Bookconsole implements IView {
     }
 
     private updatebook() {
-        const student = this.inputbook();
-        const newbook: boolean = this.bookservice.update(student);
+        this.readbook();
+        const id = this.inputid();
+        let books = this.bookservice.read();
+        let findbook = books.filter((item: Book) => item.id === id)[0];
+        if (!findbook) {
+            console.log("El libro no fue encontrado");
+            return
+        }
+        const book = this.inputbook();
+        book.id = findbook.id
+        const newbook: boolean = this.bookservice.update(book);
         console.log(newbook ? "Libro actualizado" : "No se pudo actualizar");
     }
 
@@ -92,11 +102,6 @@ export class Bookconsole implements IView {
     }
 
     private inputbook(): Book {
-
-        // let id = prompt("ID: ");
-        // if (!id || id.trim() === "") {
-        //     console.log("El ID no puede estar vacío");
-        // }
 
         let title = prompt("Titulo: ");
         if (!title || title.trim() === "") {

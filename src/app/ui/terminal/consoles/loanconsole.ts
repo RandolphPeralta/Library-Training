@@ -54,7 +54,8 @@ export class LoanConsole implements IView {
     }
 
     private lendbook() {
-
+        console.table(this.studentservice.read())
+        console.table(this.bookservice.read())
         let idbook = this.inputidbook();
         let idstudent = this.inputidstudent();
 
