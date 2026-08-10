@@ -5,8 +5,8 @@ export class MemoryRAM<T> implements IAddidionalaction<T> {
   private memory: T[] = [];
 
   create(some: any): boolean {
-        return this.memory.push(some)>0 ;
-    }
+    return this.memory.push(some) > 0;
+  }
 
   delete(id: any) {
     let index = this.memory.findIndex((item: any) => item.id === id);
