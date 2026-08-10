@@ -49,9 +49,9 @@ export class Studentconsole implements IView {
     private createStudent() {
         const student = this.inputstudent();
         let students = this.studentservice.read();
-        let findstudent = students.findIndex((item: Student) => item.id === student.id);
+        let indexstudent = students.findIndex((item: Student) => item.id === student.id);
 
-        if (findstudent !== -1) {
+        if (indexstudent !== -1) {
             console.log("Este estudiante ya fue registrado con este id")
             return;
         }

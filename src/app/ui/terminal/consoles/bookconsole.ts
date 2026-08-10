@@ -48,9 +48,9 @@ export class Bookconsole implements IView {
     private createbook() {
         const book = this.inputbook();
         let books = this.bookservice.read();
-        let indexstudent = books.findIndex((item: Book) => item.id === book.id);
+        let indexbook = books.findIndex((item: Book) => item.id === book.id);
 
-        if (indexstudent !== -1) {
+        if (indexbook !== -1) {
             console.log("Este libro ya fue registrado con este id")
             return;
         }
