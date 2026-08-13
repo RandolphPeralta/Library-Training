@@ -8,8 +8,8 @@ export class LoginWeb implements IView {
 
     execute(): void {
 
-        document.getElementById("loginForm")!.addEventListener("submit", (e) => {
-            e.preventDefault();
+        document.getElementById("loginForm")!.addEventListener("submit", (event) => {
+            event.preventDefault();
 
             const user = (document.getElementById("username") as HTMLInputElement).value;
             const pass = (document.getElementById("password") as HTMLInputElement).value;
