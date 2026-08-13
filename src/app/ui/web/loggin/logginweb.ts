@@ -1,9 +1,9 @@
-import { IView } from "../../../domain/interfaces/IView";
+import { IMenuview, IView } from "../../../domain/interfaces/IView";
 
 export class LoginWeb implements IView {
 
     constructor(
-        private menuWeb: IView
+        private menuWeb: IMenuview
     ) { }
 
     execute(): void {
