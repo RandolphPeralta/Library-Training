@@ -1,12 +1,12 @@
-import { IView } from "../../../domain/interfaces/IView";
+import { IBookview, ILoanview, IMenuview, IStudentview} from "../../../domain/interfaces/IView";
 import { prompt } from "../../../../utils/prompt";
 
-export class MenuConsole implements IView {
+export class MenuConsole implements IMenuview {
 
     constructor(
-        private studentMenu: IView,
-        private bookMenu: IView,
-        private loanMenu: IView
+        private studentMenu: IStudentview,
+        private bookMenu: IBookview,
+        private loanMenu: ILoanview
     ) { }
 
     execute() {
