@@ -1,12 +1,12 @@
-import { IView } from "../../../domain/interfaces/IView";
+import { IBookview } from "../../../domain/interfaces/IView";
 import { Book } from "../../../domain/types/Book";
 import { prompt } from "../../../../utils/prompt";
 import { IService } from "../../../domain/interfaces/IServices";
 
-export class Bookconsole implements IView {
+export class Bookconsole implements IBookview {
     constructor(private bookservice: IService<Book>) { }
 
-    execute() {
+    execute(): void {
         let run = true;
         while (run) {
             this.readMenu();
