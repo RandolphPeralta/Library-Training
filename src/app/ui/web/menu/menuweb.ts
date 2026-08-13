@@ -20,9 +20,9 @@ export class Menuweb implements IMenuview {
             document.getElementById("menuLoans")!;
 
 
-        btnStudents.addEventListener("click", (e) => {
+        btnStudents.addEventListener("click", (event) => {
 
-            e.preventDefault();
+            event.preventDefault();
 
             this.showView("studentView");
 
@@ -30,9 +30,9 @@ export class Menuweb implements IMenuview {
         });
 
 
-        btnBooks.addEventListener("click", (e) => {
+        btnBooks.addEventListener("click", (event) => {
 
-            e.preventDefault();
+            event.preventDefault();
 
             this.showView("bookView");
 
