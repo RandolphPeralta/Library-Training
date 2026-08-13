@@ -1,11 +1,11 @@
-import { IView } from "../../../domain/interfaces/IView";
+import { ILoanview } from "../../../domain/interfaces/IView";
 import { Loan } from "../../../domain/types/Loan";
 import { Book } from "../../../domain/types/Book";
 import { Student } from "../../../domain/types/Student";
 import { prompt } from "../../../../utils/prompt";
 import { IService } from "../../../domain/interfaces/IServices";
 
-export class LoanConsole implements IView {
+export class LoanConsole implements ILoanview {
 
     constructor(private studentservice: IService<Student>, private bookservice: IService<Book>, private loanservice: IService<Loan>) { }
 
