@@ -23,5 +23,12 @@ export class LoginWeb implements IView {
             }
         });
 
+        document.getElementById("btnLogout")!.addEventListener("click", () => {
+            document.getElementById("dashboard")!.classList.add("d-none");
+            document.getElementById("login")!.classList.remove("d-none");
+            (document.getElementById("loginForm") as HTMLFormElement).reset();
+
+        });
     }
+    
 }
