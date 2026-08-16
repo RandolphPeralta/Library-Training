@@ -8,7 +8,7 @@ export class MemoryRAM<T> implements IAddidionalaction<T> {
     return this.memory.push(some) > 0;
   }
 
-  delete(id: any) {
+  delete(id: any): boolean {
     let index = this.memory.findIndex((item: any) => item.id === id);
     if (index !== -1) {
       this.memory.splice(index, 1);
