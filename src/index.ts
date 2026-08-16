@@ -36,9 +36,6 @@ const bookservice = new Service<Book>(repositorybook, bookvalidator);
 
 // const menu = new MenuConsole(studentconsole, bookconsole, loanconsole);
 
-// const app = new App(menu);
-// app.run();
-
 const studentWeb = new StudentWeb(studentservice, loanservice);
 const bookWeb = new BookWeb(bookservice);
 const loanWeb = new LoanWeb(studentservice, bookservice, loanservice);
