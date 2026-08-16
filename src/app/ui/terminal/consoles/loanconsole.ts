@@ -9,7 +9,7 @@ export class LoanConsole implements ILoanview {
 
     constructor(private studentservice: IService<Student>, private bookservice: IService<Book>, private loanservice: IService<Loan>) { }
 
-    execute() {
+    execute(): void {
         let run = true;
 
         while (run) {

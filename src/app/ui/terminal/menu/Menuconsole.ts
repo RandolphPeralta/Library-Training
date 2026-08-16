@@ -9,7 +9,7 @@ export class MenuConsole implements IMenuview {
         private loanMenu: ILoanview
     ) { }
 
-    execute() {
+    execute(): void {
 
         let run = true;
 

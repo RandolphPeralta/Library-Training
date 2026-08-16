@@ -8,7 +8,7 @@ export class Studentconsole implements IStudentview {
     
     constructor(private studentservice: IService<Student>, private loanservice: IService<Loan>) { }
 
-    execute() {
+    execute(): void {
         let run = true;
         while (run) {
             this.readMenu();
