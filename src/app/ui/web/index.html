@@ -39,7 +39,8 @@
 
                     <div class="mb-4">
                         <label for="password" class="form-label fw-semibold">Contraseña</label>
-                        <input type="password" id="password" class="form-control" placeholder="Ingresa tu contraseña" required>
+                        <input type="password" id="password" class="form-control" placeholder="Ingresa tu contraseña"
+                            required>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-lg w-100">Iniciar sesión</button>
@@ -82,9 +83,17 @@
                 <section id="studentView">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h3>Gestión de Estudiantes</h3>
-                        <button type="button" id="btnOpenStudentModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal">
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" id="btnOpenStudentModal" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                            data-bs-target="#studentModal">
                             + Registrar Estudiante
                         </button>
+                        <button type="button" class="btn btn-outline-primary me-2 mb-3" data-bs-toggle="modal"
+                            data-bs-target="#searchStudentModal">
+                            🔍 Buscar para Editar/Eliminar
+                        </button>
+
                     </div>
 
                     <div id="studentAlert"></div>
@@ -104,34 +113,58 @@
                         </table>
                     </div>
 
-                    <div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="studentFormTitle">Registrar Estudiante</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <form id="studentForm">
                                     <div class="modal-body row g-3">
                                         <input type="hidden" id="studentEditingId">
                                         <div class="col-12">
                                             <label class="form-label">Nombre</label>
-                                            <input type="text" id="studentName" class="form-control" placeholder="Ej. Randolph Peralta" required>
+                                            <input type="text" id="studentName" class="form-control"
+                                                placeholder="Ej. Randolph Peralta" required>
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">Identificación</label>
-                                            <input type="text" id="studentIdent" class="form-control" placeholder="Ej. 10203040" required>
+                                            <input type="text" id="studentIdent" class="form-control"
+                                                placeholder="Ej. 10203040" required>
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">Grado Escolar</label>
-                                            <input type="text" id="studentGrade" class="form-control" placeholder="Ej. 11° A" required>
+                                            <input type="text" id="studentGrade" class="form-control"
+                                                placeholder="Ej. 11° A" required>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" id="studentBtnCancel" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" id="studentBtnSubmit" class="btn btn-primary">Guardar</button>
+                                        <button type="button" id="studentBtnCancel" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" id="studentBtnSubmit"
+                                            class="btn btn-primary">Guardar</button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="searchStudentModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Buscar Estudiante (Gestión Rápida)</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" id="quickSearchStudentInput" class="form-control"
+                                        placeholder="Escribe nombre o identificación...">
+                                    <div id="quickSearchStudentResults" class="list-group mt-3"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,8 +173,15 @@
                 <section id="bookView" class="d-none">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h3>Gestión de Libros</h3>
-                        <button type="button" id="btnOpenBookModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal">
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" id="btnOpenBookModal" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                            data-bs-target="#bookModal">
                             + Registrar Libro
+                        </button>
+                        <button type="button" class="btn btn-outline-primary me-2 mb-3" data-bs-toggle="modal"
+                            data-bs-target="#searchBookModal">
+                            🔍 Buscar para Editar/Eliminar
                         </button>
                     </div>
 
@@ -162,30 +202,53 @@
                         </table>
                     </div>
 
-                    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="bookFormTitle">Registrar Libro</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <form id="bookForm">
                                     <div class="modal-body row g-3">
                                         <input type="hidden" id="bookEditingId">
                                         <div class="col-12">
                                             <label class="form-label">Título</label>
-                                            <input type="text" id="bookTitle" class="form-control" placeholder="Ej. Cien Años de Soledad" required>
+                                            <input type="text" id="bookTitle" class="form-control"
+                                                placeholder="Ej. Cien Años de Soledad" required>
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">Autor</label>
-                                            <input type="text" id="bookAuthor" class="form-control" placeholder="Ej. Gabriel García Márquez" required>
+                                            <input type="text" id="bookAuthor" class="form-control"
+                                                placeholder="Ej. Gabriel García Márquez" required>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" id="bookBtnCancel" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="submit" id="bookBtnSubmit" class="btn btn-primary">Guardar</button>
+                                        <button type="button" id="bookBtnCancel" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" id="bookBtnSubmit"
+                                            class="btn btn-primary">Guardar</button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="searchBookModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Buscar Libro (Gestión Rápida)</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" id="quickSearchBookInput" class="form-control"
+                                        placeholder="Escribe titulo o autor...">
+                                    <div id="quickSearchBookResults" class="list-group mt-3"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -194,7 +257,10 @@
                 <section id="loanView" class="d-none">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h3>Gestión de Préstamos</h3>
-                        <button type="button" id="btnOpenLoanModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loanModal">
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" id="btnOpenLoanModal" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                            data-bs-target="#loanModal">
                             + Prestar Libro
                         </button>
                     </div>
@@ -217,30 +283,35 @@
                         </table>
                     </div>
 
-                    <div class="modal fade" id="loanModal" tabindex="-1" aria-labelledby="loanModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="loanModal" tabindex="-1" aria-labelledby="loanModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Prestar Libro</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <form id="loanForm">
                                     <div class="modal-body row g-3">
                                         <div class="col-12">
                                             <label class="form-label">Estudiante</label>
-                                            <input type="text" id="loanStudentSearch" class="form-control" placeholder="Buscar por nombre o identificación" autocomplete="off">
+                                            <input type="text" id="loanStudentSearch" class="form-control"
+                                                placeholder="Buscar por nombre o identificación" autocomplete="off">
                                             <input type="hidden" id="loanStudent">
                                             <div id="loanStudentResults" class="list-group mt-1"></div>
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">Libro</label>
-                                            <input type="text" id="loanBookSearch" class="form-control" placeholder="Buscar por título o autor" autocomplete="off">
+                                            <input type="text" id="loanBookSearch" class="form-control"
+                                                placeholder="Buscar por título o autor" autocomplete="off">
                                             <input type="hidden" id="loanBook">
                                             <div id="loanBookResults" class="list-group mt-1"></div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-primary">Realizar Préstamo</button>
                                     </div>
                                 </form>
