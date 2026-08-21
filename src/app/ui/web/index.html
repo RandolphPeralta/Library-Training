@@ -85,8 +85,8 @@
                         <h3>Gestión de Estudiantes</h3>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button type="button" id="btnOpenStudentModal" class="btn btn-primary mb-3" data-bs-toggle="modal"
-                            data-bs-target="#studentModal">
+                        <button type="button" id="btnOpenStudentModal" class="btn btn-primary mb-3"
+                            data-bs-toggle="modal" data-bs-target="#studentModal">
                             + Registrar Estudiante
                         </button>
                         <button type="button" class="btn btn-outline-primary me-2 mb-3" data-bs-toggle="modal"
@@ -106,7 +106,6 @@
                                     <th>Nombre</th>
                                     <th>Identificación</th>
                                     <th>Grado</th>
-                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="studentTableBody"></tbody>
@@ -195,7 +194,6 @@
                                     <th>Título</th>
                                     <th>Autor</th>
                                     <th>Estado</th>
-                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="bookTableBody"></tbody>
@@ -263,6 +261,11 @@
                             data-bs-target="#loanModal">
                             + Prestar Libro
                         </button>
+
+                        <button type="button" class="btn btn-outline-primary me-2 mb-3" data-bs-toggle="modal"
+                            data-bs-target="#searchLoanModal">
+                            🔍 Buscar Préstamo para Devolver
+                        </button>
                     </div>
 
                     <div id="loanAlert"></div>
@@ -276,7 +279,6 @@
                                     <th>Estudiante</th>
                                     <th>Fecha Préstamo</th>
                                     <th>Fecha Devolución</th>
-                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="loanTableBody"></tbody>
@@ -315,6 +317,29 @@
                                         <button type="submit" class="btn btn-primary">Realizar Préstamo</button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="searchLoanModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Buscar Préstamo (Devolución Rápida)</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <div class="input-group">
+                                            <span class="input-group-text">🔍</span>
+                                            <input type="text" id="quickSearchLoanInput" class="form-control"
+                                                placeholder="Buscar por estudiante o libro...">
+                                        </div>
+                                        <small class="text-muted">Solo muestra préstamos pendientes</small>
+                                    </div>
+                                    <div id="quickSearchLoanResults" class="list-group mt-3"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
