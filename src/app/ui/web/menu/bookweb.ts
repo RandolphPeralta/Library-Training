@@ -184,11 +184,11 @@ export class BookWeb implements IBookview {
         });
     }
 
-    private showAlert(msg: string, type: string): void {
+    private showAlert(message: string, type: string): void {
         const alertBox = document.getElementById("bookAlert")!;
         alertBox.innerHTML = `
             <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-                ${msg}
+                ${message}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         `;
